@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ressources Squelette — Ressources Vidéo</title>
+    <title>Le Squelette — Ressources Vidéo</title>
     <style>
         * {
             margin: 0;
@@ -192,6 +192,39 @@
             overflow: hidden;
         }
 
+        .nav-menu {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav-menu a {
+            font-size: 12px;
+            font-weight: 600;
+            color: #9c8f88;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #f0e9df;
+            background: #3a3532;
+        }
+
+        .nav-menu a.active {
+            color: #f0e9df;
+            background: #948294;
+            color: #1c1a19;
+        }
+
         footer {
             margin-top: 60px;
             padding-top: 30px;
@@ -223,8 +256,18 @@
 </head>
 <body>
     <div class="container">
+        <div class="nav-menu">
+            <a href="index.html">← Accueil</a>
+            <a href="Squelette.html" class="active">Squelette</a>
+            <a href="Liste_Crane.html">Crâne</a>
+            <a href="Les_Muscles.html">Muscles</a>
+            <a href="La_peau_et_finaliser_le_modele.html">Peau & Finalisation</a>
+            <a href="La_topologie.html">Topologie</a>
+            <a href="Projection_et_textures.html">Projection</a>
+        </div>
+
         <header>
-            <h1>Ressources Squelette</h1>
+            <h1>Le squelette</h1>
             <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
         </header>
 
