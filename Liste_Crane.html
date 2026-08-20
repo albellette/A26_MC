@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste Crâne — Ressources Vidéo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #1c1a19;
+            color: #f0e9df;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 50px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #9c8f88;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 24px;
+            margin-top: 30px;
+        }
+
+        .video-card {
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.15);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background: #1c1a19;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .video-content {
+            padding: 20px;
+        }
+
+        .video-order {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #948294;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .video-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .video-duration {
+            font-size: 13px;
+            color: #9c8f88;
+            font-style: italic;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3532;
+            text-align: right;
+            font-size: 11px;
+            color: #6b645c;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Liste Crâne</h1>
+            <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
+        </header>
+
+        <div class="grid" id="videoGrid"></div>
+
+        <footer>
+            Ressources vidéo — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+        </footer>
+    </div>
+
+    <script>
+        const videos = [
+            {"section":"Liste Crâne","ordre":1,"titre":"MO2022 - B2 - 01 Crane Partie suppérieur P1","duree_s":390,"duree":"6:30","date_upload":"2022-03-27T21:13:43","url":"https://www.youtube.com/watch?v=aLAzKbbahgk","video_id":"aLAzKbbahgk","miniature":"https://img.youtube.com/vi/aLAzKbbahgk/hqdefault.jpg"},
+            {"section":"Liste Crâne","ordre":2,"titre":"MO2022 - B2 - 02 Crane Partie suppérieur P2","duree_s":345,"duree":"5:45","date_upload":"2022-03-27T21:14:20","url":"https://www.youtube.com/watch?v=f8d0f-dbGiU","video_id":"f8d0f-dbGiU","miniature":"https://img.youtube.com/vi/f8d0f-dbGiU/hqdefault.jpg"},
+            {"section":"Liste Crâne","ordre":3,"titre":"MO2022 - B2 - 04 Crane Partie inférieure (mandibule) P2","duree_s":145,"duree":"2:25","date_upload":"2022-03-28T15:17:55","url":"https://www.youtube.com/watch?v=AS185CZqipg","video_id":"AS185CZqipg","miniature":"https://img.youtube.com/vi/AS185CZqipg/hqdefault.jpg"},
+            {"section":"Liste Crâne","ordre":4,"titre":"MO2022 - B2 - 06 Crane Partie inférieure Dents P2","duree_s":294,"duree":"4:54","date_upload":"2022-03-28T15:19:10","url":"https://www.youtube.com/watch?v=wFPg0X1xi0s","video_id":"wFPg0X1xi0s","miniature":"https://img.youtube.com/vi/wFPg0X1xi0s/hqdefault.jpg"},
+            {"section":"Liste Crâne","ordre":5,"titre":"MO2022 - B2 - 07 Ajuster le crane au reste du corps","duree_s":68,"duree":"1:08","date_upload":"2022-03-28T15:19:18","url":"https://www.youtube.com/watch?v=6AViSpMagJE","video_id":"6AViSpMagJE","miniature":"https://img.youtube.com/vi/6AViSpMagJE/hqdefault.jpg"},
+            {"section":"Liste Crâne","ordre":6,"titre":"MO2022 - B2 - 03 Crane Partie inférieure (mandibule) P1","duree_s":339,"duree":"5:39","date_upload":"2022-03-28T16:29:15","url":"https://www.youtube.com/watch?v=xSl_Y7fZkdk","video_id":"xSl_Y7fZkdk","miniature":"https://img.youtube.com/vi/xSl_Y7fZkdk/hqdefault.jpg"},
+            {"section":"Liste Crâne","ordre":7,"titre":"MO2022 - B2 - 05 Crane Partie inférieure Dents P1","duree_s":385,"duree":"6:25","date_upload":"2022-03-28T16:29:59","url":"https://www.youtube.com/watch?v=D25nrYyNC4k","video_id":"D25nrYyNC4k","miniature":"https://img.youtube.com/vi/D25nrYyNC4k/hqdefault.jpg"}
+        ];
+
+        const grid = document.getElementById('videoGrid');
+        
+        videos.forEach(video => {
+            const card = document.createElement('div');
+            card.className = 'video-card';
+            card.innerHTML = `
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="video-content">
+                    <div class="video-order">Vidéo ${video.ordre}</div>
+                    <div class="video-title">${video.titre}</div>
+                    <div class="video-duration">Durée : ${video.duree}</div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
