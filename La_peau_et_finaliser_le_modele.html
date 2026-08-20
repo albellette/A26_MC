@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La peau et finaliser le modèle — Ressources Vidéo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #1c1a19;
+            color: #f0e9df;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #9c8f88;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .player-section {
+            margin-bottom: 50px;
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #1c1a19;
+            overflow: hidden;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-info {
+            padding: 24px;
+            background: #2c2926;
+        }
+
+        .player-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .player-meta {
+            font-size: 13px;
+            color: #9c8f88;
+            display: flex;
+            gap: 20px;
+        }
+
+        .thumbnails-section {
+            margin-top: 40px;
+        }
+
+        .thumbnails-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            background: #2c2926;
+            border: 2px solid #3a3532;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background: #1c1a19;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-duration {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #f0e9df;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .thumbnail-number {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #948294;
+            color: #1c1a19;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .thumbnail-info {
+            padding: 12px;
+            background: #2c2926;
+        }
+
+        .thumbnail-title {
+            font-size: 11px;
+            color: #f0e9df;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3532;
+            text-align: right;
+            font-size: 11px;
+            color: #6b645c;
+        }
+
+        @media (max-width: 768px) {
+            .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .player-info {
+                padding: 16px;
+            }
+
+            .player-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>La peau et finaliser le modèle</h1>
+            <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
+        </header>
+
+        <div class="player-section">
+            <div class="player-wrapper">
+                <iframe id="mainPlayer" width="560" height="315" src="https://www.youtube.com/embed/XVPOnNj6j1s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="player-info">
+                <div class="player-title" id="playerTitle">MO2022 - B2 - 00 Introduction</div>
+                <div class="player-meta">
+                    <span id="playerDuration">Durée : 6:06</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnails-section">
+            <div class="thumbnails-title">Sélectionne une vidéo</div>
+            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+        </div>
+
+        <footer>
+            Ressources vidéo — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+        </footer>
+    </div>
+
+    <script>
+        const videos = [
+            {"ordre":1,"titre":"MO2022 - B2 - 00 Introduction-","duree":"6:06","video_id":"XVPOnNj6j1s","miniature":"https://img.youtube.com/vi/XVPOnNj6j1s/hqdefault.jpg"},
+            {"ordre":2,"titre":"MO2022 - B2 - 01 Préparation","duree":"1:49","video_id":"K62ymwbolbU","miniature":"https://img.youtube.com/vi/K62ymwbolbU/hqdefault.jpg"},
+            {"ordre":3,"titre":"MO2022 - B2 - 02 Combler les trous et corriger les problèmes laissé par dynamesh_2","duree":"4:50","video_id":"myBMM3XUNEg","miniature":"https://img.youtube.com/vi/myBMM3XUNEg/hqdefault.jpg"},
+            {"ordre":4,"titre":"MO2022 - B2 - 03 Méthode XRAY pour réparer les problèmes laissé par dynamesh_2","duree":"3:11","video_id":"1CKEnqFduu8","miniature":"https://img.youtube.com/vi/1CKEnqFduu8/hqdefault.jpg"},
+            {"ordre":5,"titre":"MO2022 - B2 - 04a Sculpter les muscles et les transitions_2","duree":"8:39","video_id":"aEgbt1KIINk","miniature":"https://img.youtube.com/vi/aEgbt1KIINk/hqdefault.jpg"},
+            {"ordre":6,"titre":"MO2022 - B2 - 04b Sculpter les muscles et les transitions_2","duree":"2:32","video_id":"kY2WhhMWcSU","miniature":"https://img.youtube.com/vi/kY2WhhMWcSU/hqdefault.jpg"},
+            {"ordre":7,"titre":"MO2022 - B2 - 05 Ajouter les cousinets aux pattes_2","duree":"5:13","video_id":"z0VOqH7Vxas","miniature":"https://img.youtube.com/vi/z0VOqH7Vxas/hqdefault.jpg"},
+            {"ordre":8,"titre":"MO2022 - B2 - 06 Créer les oreilles-_2","duree":"7:49","video_id":"6MCTjGwYu3I","miniature":"https://img.youtube.com/vi/6MCTjGwYu3I/hqdefault.jpg"},
+            {"ordre":9,"titre":"MO2022 - B2 - 07 Ajouter Les paupières (Yeux)_2","duree":"3:50","video_id":"0q--OBT7Rxk","miniature":"https://img.youtube.com/vi/0q--OBT7Rxk/hqdefault.jpg"},
+            {"ordre":10,"titre":"MO2022 - B2 - 08a Ajouter la peau sur la tête_2","duree":"3:53","video_id":"f2rE9ZpniyE","miniature":"https://img.youtube.com/vi/f2rE9ZpniyE/hqdefault.jpg"},
+            {"ordre":11,"titre":"MO2022 - B2 - 08b Ajouter le museau-_2","duree":"3:53","video_id":"w81PSSo1bZQ","miniature":"https://img.youtube.com/vi/w81PSSo1bZQ/hqdefault.jpg"},
+            {"ordre":12,"titre":"MO2022 - B2 - 08c Harmonisé la tête_2","duree":"4:44","video_id":"vu8eTs5neJA","miniature":"https://img.youtube.com/vi/vu8eTs5neJA/hqdefault.jpg"},
+            {"ordre":13,"titre":"MO2022 - B2 - 09a La peau sur le corps-","duree":"5:44","video_id":"tOZig5R5ZU0","miniature":"https://img.youtube.com/vi/tOZig5R5ZU0/hqdefault.jpg"},
+            {"ordre":14,"titre":"MO2022 - B2 - 09b Correction des pattes","duree":"5:45","video_id":"mlPCuEBTbCA","miniature":"https://img.youtube.com/vi/mlPCuEBTbCA/hqdefault.jpg"},
+            {"ordre":15,"titre":"MO2022 - B2 - 09c Finaliser les pattes","duree":"5:49","video_id":"HSGAoTEjsvI","miniature":"https://img.youtube.com/vi/HSGAoTEjsvI/hqdefault.jpg"},
+            {"ordre":16,"titre":"MO2022 - B2 - 10 Ajouter les griffes","duree":"3:32","video_id":"zYFyDcUeVU4","miniature":"https://img.youtube.com/vi/zYFyDcUeVU4/hqdefault.jpg"},
+            {"ordre":17,"titre":"MO2022 - B2 - 11 Récupérer et ajuster le crane et les dents","duree":"3:01","video_id":"IyrSn7ti8L4","miniature":"https://img.youtube.com/vi/IyrSn7ti8L4/hqdefault.jpg"}
+        ];
+
+        const grid = document.getElementById('thumbnailsGrid');
+        const player = document.getElementById('mainPlayer');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerDuration = document.getElementById('playerDuration');
+
+        videos.forEach((video, index) => {
+            const card = document.createElement('div');
+            card.className = 'thumbnail-card';
+            if (index === 0) card.classList.add('active');
+            
+            card.innerHTML = `
+                <div class="thumbnail-image">
+                    <img src="${video.miniature}" alt="${video.titre}">
+                    <div class="thumbnail-number">${video.ordre}</div>
+                    <div class="thumbnail-duration">${video.duree}</div>
+                </div>
+                <div class="thumbnail-info">
+                    <div class="thumbnail-title">${video.titre}</div>
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                playerTitle.textContent = video.titre;
+                playerDuration.textContent = `Durée : ${video.duree}`;
+
+                document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>

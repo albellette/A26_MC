@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projection et textures — Ressources Vidéo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #1c1a19;
+            color: #f0e9df;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #9c8f88;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .player-section {
+            margin-bottom: 50px;
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #1c1a19;
+            overflow: hidden;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-info {
+            padding: 24px;
+            background: #2c2926;
+        }
+
+        .player-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .player-meta {
+            font-size: 13px;
+            color: #9c8f88;
+            display: flex;
+            gap: 20px;
+        }
+
+        .thumbnails-section {
+            margin-top: 40px;
+        }
+
+        .thumbnails-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            background: #2c2926;
+            border: 2px solid #3a3532;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background: #1c1a19;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-duration {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #f0e9df;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .thumbnail-number {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #948294;
+            color: #1c1a19;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .thumbnail-info {
+            padding: 12px;
+            background: #2c2926;
+        }
+
+        .thumbnail-title {
+            font-size: 11px;
+            color: #f0e9df;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3532;
+            text-align: right;
+            font-size: 11px;
+            color: #6b645c;
+        }
+
+        @media (max-width: 768px) {
+            .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .player-info {
+                padding: 16px;
+            }
+
+            .player-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Projection et textures</h1>
+            <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
+        </header>
+
+        <div class="player-section">
+            <div class="player-wrapper">
+                <iframe id="mainPlayer" width="560" height="315" src="https://www.youtube.com/embed/D1hDJBNy6ZM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="player-info">
+                <div class="player-title" id="playerTitle">MO2023 01 Intro Préparer son modèle pour la projection dans Zbrush</div>
+                <div class="player-meta">
+                    <span id="playerDuration">Durée : 2:35</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnails-section">
+            <div class="thumbnails-title">Sélectionne une vidéo</div>
+            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+        </div>
+
+        <footer>
+            Ressources vidéo — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+        </footer>
+    </div>
+
+    <script>
+        const videos = [
+            {"ordre":1,"titre":"MO2023 01 Intro Préparer son modèle pour la projection dans Zbrush","duree":"2:35","video_id":"D1hDJBNy6ZM","miniature":"https://img.youtube.com/vi/D1hDJBNy6ZM/hqdefault.jpg"},
+            {"ordre":2,"titre":"MO2023 02 Les coordonnées de Maya à Zbrush","duree":"4:41","video_id":"P_wOc1vZ5xw","miniature":"https://img.youtube.com/vi/P_wOc1vZ5xw/hqdefault.jpg"},
+            {"ordre":3,"titre":"MO2023 03a Effectuer la projection","duree":"10:26","video_id":"818Y5OnXRCE","miniature":"https://img.youtube.com/vi/818Y5OnXRCE/hqdefault.jpg"},
+            {"ordre":4,"titre":"MO2023 03b Faire des corrections sur le modèle projeter","duree":"3:28","video_id":"MfeRD0nzQ8M","miniature":"https://img.youtube.com/vi/MfeRD0nzQ8M/hqdefault.jpg"},
+            {"ordre":5,"titre":"MO2023 04 Retournée le modèle projeter dans Maya","duree":"6:27","video_id":"f84QP4pDGdg","miniature":"https://img.youtube.com/vi/f84QP4pDGdg/hqdefault.jpg"}
+        ];
+
+        const grid = document.getElementById('thumbnailsGrid');
+        const player = document.getElementById('mainPlayer');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerDuration = document.getElementById('playerDuration');
+
+        videos.forEach((video, index) => {
+            const card = document.createElement('div');
+            card.className = 'thumbnail-card';
+            if (index === 0) card.classList.add('active');
+            
+            card.innerHTML = `
+                <div class="thumbnail-image">
+                    <img src="${video.miniature}" alt="${video.titre}">
+                    <div class="thumbnail-number">${video.ordre}</div>
+                    <div class="thumbnail-duration">${video.duree}</div>
+                </div>
+                <div class="thumbnail-info">
+                    <div class="thumbnail-title">${video.titre}</div>
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                playerTitle.textContent = video.titre;
+                playerDuration.textContent = `Durée : ${video.duree}`;
+
+                document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>

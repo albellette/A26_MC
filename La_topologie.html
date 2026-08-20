@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La topologie — Ressources Vidéo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #1c1a19;
+            color: #f0e9df;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #9c8f88;
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .player-section {
+            margin-bottom: 50px;
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #1c1a19;
+            overflow: hidden;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-info {
+            padding: 24px;
+            background: #2c2926;
+        }
+
+        .player-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .player-meta {
+            font-size: 13px;
+            color: #9c8f88;
+            display: flex;
+            gap: 20px;
+        }
+
+        .thumbnails-section {
+            margin-top: 40px;
+        }
+
+        .thumbnails-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            background: #2c2926;
+            border: 2px solid #3a3532;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background: #1c1a19;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-duration {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #f0e9df;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .thumbnail-number {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #948294;
+            color: #1c1a19;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .thumbnail-info {
+            padding: 12px;
+            background: #2c2926;
+        }
+
+        .thumbnail-title {
+            font-size: 11px;
+            color: #f0e9df;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3532;
+            text-align: right;
+            font-size: 11px;
+            color: #6b645c;
+        }
+
+        @media (max-width: 768px) {
+            .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .player-info {
+                padding: 16px;
+            }
+
+            .player-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>La topologie</h1>
+            <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
+        </header>
+
+        <div class="player-section">
+            <div class="player-wrapper">
+                <iframe id="mainPlayer" width="560" height="315" src="https://www.youtube.com/embed/_QVsttGNwP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="player-info">
+                <div class="player-title" id="playerTitle">MO2022 - B2 - 00 Mise en place de la scène</div>
+                <div class="player-meta">
+                    <span id="playerDuration">Durée : 2:09</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="thumbnails-section">
+            <div class="thumbnails-title">Sélectionne une vidéo</div>
+            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+        </div>
+
+        <footer>
+            Ressources vidéo — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+        </footer>
+    </div>
+
+    <script>
+        const videos = [
+            {"ordre":1,"titre":"MO2022 - B2 - 00 Mise en place de la scène","duree":"2:09","video_id":"_QVsttGNwP8","miniature":"https://img.youtube.com/vi/_QVsttGNwP8/hqdefault.jpg"},
+            {"ordre":2,"titre":"MO2022 - B2 - 01a Topologie de la tête-","duree":"9:00","video_id":"gLxc0BU9zVY","miniature":"https://img.youtube.com/vi/gLxc0BU9zVY/hqdefault.jpg"},
+            {"ordre":3,"titre":"MO2022 - B2 - 01b Topologie de la tête","duree":"8:26","video_id":"vF15qveGYX0","miniature":"https://img.youtube.com/vi/vF15qveGYX0/hqdefault.jpg"},
+            {"ordre":4,"titre":"MO2022 - B2 - 01c Topologie de la tête","duree":"5:30","video_id":"_MWIClkXcCc","miniature":"https://img.youtube.com/vi/_MWIClkXcCc/hqdefault.jpg"},
+            {"ordre":5,"titre":"MO2022 - B2 - 02 Topologie de la patte avant","duree":"2:26","video_id":"FObp8aW9zGQ","miniature":"https://img.youtube.com/vi/FObp8aW9zGQ/hqdefault.jpg"},
+            {"ordre":6,"titre":"MO2022 - B2 - 03a Topologie de la patte arrière","duree":"6:10","video_id":"4QHUUHm18Y4","miniature":"https://img.youtube.com/vi/4QHUUHm18Y4/hqdefault.jpg"},
+            {"ordre":7,"titre":"MO2022 - B2 - 03b Topologie de la patte arrière","duree":"4:23","video_id":"SsEzn3d6bA8","miniature":"https://img.youtube.com/vi/SsEzn3d6bA8/hqdefault.jpg"},
+            {"ordre":8,"titre":"MO2022 - B2 - 04a Topologie du corps (tronc)","duree":"4:41","video_id":"_kGquIxht_o","miniature":"https://img.youtube.com/vi/_kGquIxht_o/hqdefault.jpg"},
+            {"ordre":9,"titre":"MO2022 - B2 - 04b Topologie du corps (tronc)","duree":"6:34","video_id":"LTI3O9zdO8s","miniature":"https://img.youtube.com/vi/LTI3O9zdO8s/hqdefault.jpg"},
+            {"ordre":10,"titre":"MO2022 - B2 - 05a Topologie de la patte avant (mains)","duree":"6:34","video_id":"v3BjFOxqeU8","miniature":"https://img.youtube.com/vi/v3BjFOxqeU8/hqdefault.jpg"},
+            {"ordre":11,"titre":"MO2022 - B2 - 05b Topologie de la patte avant (mains)","duree":"3:02","video_id":"7-cReMjOnEY","miniature":"https://img.youtube.com/vi/7-cReMjOnEY/hqdefault.jpg"},
+            {"ordre":12,"titre":"MO2022 - B2 - 06a Topologie de la patte arrière (piéds)","duree":"6:10","video_id":"YPmPIZQLc1I","miniature":"https://img.youtube.com/vi/YPmPIZQLc1I/hqdefault.jpg"},
+            {"ordre":13,"titre":"MO2022 - B2 - 06b Topologie de la patte arrière (piéds)","duree":"4:23","video_id":"VG09dZraxpA","miniature":"https://img.youtube.com/vi/VG09dZraxpA/hqdefault.jpg"},
+            {"ordre":14,"titre":"MO2022 - B2 - 07a Topologie finaliser la tête de la souris-","duree":"3:07","video_id":"59joW8S6bHE","miniature":"https://img.youtube.com/vi/59joW8S6bHE/hqdefault.jpg"},
+            {"ordre":15,"titre":"MO2022 - B2 - 07c Topologie finaliser la tête de la souris","duree":"2:33","video_id":"kMC01BIWcvI","miniature":"https://img.youtube.com/vi/kMC01BIWcvI/hqdefault.jpg"},
+            {"ordre":16,"titre":"MO2022 - B2 - 07b Topologie finaliser la tête de la souris","duree":"8:03","video_id":"QRHwMagQbRA","miniature":"https://img.youtube.com/vi/QRHwMagQbRA/hqdefault.jpg"},
+            {"ordre":17,"titre":"MO2022 - B2 - Présentation d'outils Utiliser les outils de maya en live surface","duree":"2:40","video_id":"U8PNKVxyQ-E","miniature":"https://img.youtube.com/vi/U8PNKVxyQ-E/hqdefault.jpg"},
+            {"ordre":18,"titre":"MO2022 - B2 - Présentation d'outils QuadDraw","duree":"6:14","video_id":"99FCK7850g0","miniature":"https://img.youtube.com/vi/99FCK7850g0/hqdefault.jpg"},
+            {"ordre":19,"titre":"MO2022 - B2 - Présentation d'outils Multicut","duree":"1:34","video_id":"DIw5jpYyXPA","miniature":"https://img.youtube.com/vi/DIw5jpYyXPA/hqdefault.jpg"},
+            {"ordre":20,"titre":"MO2022 - B2 - Présentation d'outils Mise en place de la scène","duree":"6:58","video_id":"QZyrjYW7k7g","miniature":"https://img.youtube.com/vi/QZyrjYW7k7g/hqdefault.jpg"},
+            {"ordre":21,"titre":"MO2022 - B2 - IntroducitonB Exporter de Zbrush vers maya","duree":"3:16","video_id":"h7BxBOgLnRI","miniature":"https://img.youtube.com/vi/h7BxBOgLnRI/hqdefault.jpg"},
+            {"ordre":22,"titre":"MO2022 - B2 - Introduciton Corps","duree":"2:13","video_id":"CZla365DY6A","miniature":"https://img.youtube.com/vi/CZla365DY6A/hqdefault.jpg"},
+            {"ordre":23,"titre":"MO2022 - B2 - Introduciton Visage-","duree":"1:51","video_id":"xuzDGYS0gaw","miniature":"https://img.youtube.com/vi/xuzDGYS0gaw/hqdefault.jpg"},
+            {"ordre":24,"titre":"MO2022 - B2 - 08a Finaliser le corps et effectuer le miroir_YouTube","duree":"1:22","video_id":"g4NB3gP4qJM","miniature":"https://img.youtube.com/vi/g4NB3gP4qJM/hqdefault.jpg"},
+            {"ordre":25,"titre":"MO2022 - B2 - 08c Remplacer la géométrie des globes oculaires_YouTube","duree":"6:15","video_id":"Q7ybsvnJvtU","miniature":"https://img.youtube.com/vi/Q7ybsvnJvtU/hqdefault.jpg"},
+            {"ordre":26,"titre":"MO2022 - B2 - 08b Créer la topologie du dentier et des dents_YouTube","duree":"6:15","video_id":"5wIPgEnV9Xk","miniature":"https://img.youtube.com/vi/5wIPgEnV9Xk/hqdefault.jpg"},
+            {"ordre":27,"titre":"MO2022 - B2 - 00 Section des UV du corps_YouTube","duree":"3:38","video_id":"xI8L52juYTk","miniature":"https://img.youtube.com/vi/xI8L52juYTk/hqdefault.jpg"},
+            {"ordre":28,"titre":"MO2022 - B2 - 01 Section des UV des pattes_YouTube","duree":"3:16","video_id":"Vb2jvd4qKII","miniature":"https://img.youtube.com/vi/Vb2jvd4qKII/hqdefault.jpg"},
+            {"ordre":29,"titre":"MO2022 - B2 - 02 Section des UV de la tête et packing_YouTube","duree":"1:23","video_id":"APAZBpYcB1c","miniature":"https://img.youtube.com/vi/APAZBpYcB1c/hqdefault.jpg"},
+            {"ordre":30,"titre":"MO2022 - B2 - DEnts2_1","duree":"0:55","video_id":"tUpKgDFR5Wg","miniature":"https://img.youtube.com/vi/tUpKgDFR5Wg/hqdefault.jpg"},
+            {"ordre":31,"titre":"MO2022 - B2 - Langue_1","duree":"1:20","video_id":"JQtV3QzHcvU","miniature":"https://img.youtube.com/vi/JQtV3QzHcvU/hqdefault.jpg"},
+            {"ordre":32,"titre":"MO2022 - B2 - Gensive_1","duree":"1:50","video_id":"Tprd1A16BPo","miniature":"https://img.youtube.com/vi/Tprd1A16BPo/hqdefault.jpg"},
+            {"ordre":33,"titre":"MO2022 - B2 - Griffes_1","duree":"2:28","video_id":"FnejJ0hEowU","miniature":"https://img.youtube.com/vi/FnejJ0hEowU/hqdefault.jpg"},
+            {"ordre":34,"titre":"MO2022 - B2 - Globes oculaires_1","duree":"2:02","video_id":"3a30Xi5cBws","miniature":"https://img.youtube.com/vi/3a30Xi5cBws/hqdefault.jpg"},
+            {"ordre":35,"titre":"MO2022 - B2 - DEnts1_1","duree":"5:20","video_id":"3I01jB0oP20","miniature":"https://img.youtube.com/vi/3I01jB0oP20/hqdefault.jpg"}
+        ];
+
+        const grid = document.getElementById('thumbnailsGrid');
+        const player = document.getElementById('mainPlayer');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerDuration = document.getElementById('playerDuration');
+
+        videos.forEach((video, index) => {
+            const card = document.createElement('div');
+            card.className = 'thumbnail-card';
+            if (index === 0) card.classList.add('active');
+            
+            card.innerHTML = `
+                <div class="thumbnail-image">
+                    <img src="${video.miniature}" alt="${video.titre}">
+                    <div class="thumbnail-number">${video.ordre}</div>
+                    <div class="thumbnail-duration">${video.duree}</div>
+                </div>
+                <div class="thumbnail-info">
+                    <div class="thumbnail-title">${video.titre}</div>
+                </div>
+            `;
+
+            card.addEventListener('click', () => {
+                player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                playerTitle.textContent = video.titre;
+                playerDuration.textContent = `Durée : ${video.duree}`;
+
+                document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
