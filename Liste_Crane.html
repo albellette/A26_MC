@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste Crâne — Ressources Vidéo</title>
+    <title>Le Crâne — Ressources Vidéo</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
         }
 
         header {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             border-bottom: 2px solid #948294;
             padding-bottom: 20px;
         }
@@ -42,69 +42,154 @@
             font-weight: 400;
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 24px;
-            margin-top: 30px;
-        }
-
-        .video-card {
+        /* Lecteur principal */
+        .player-section {
+            margin-bottom: 50px;
             background: #2c2926;
             border: 1px solid #3a3532;
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
         }
 
-        .video-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.15);
-        }
-
-        .video-wrapper {
+        .player-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%; /* 16:9 */
             background: #1c1a19;
             overflow: hidden;
         }
 
-        .video-wrapper iframe {
+        .player-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
-            border-radius: 10px 10px 0 0;
         }
 
-        .video-content {
-            padding: 20px;
+        .player-info {
+            padding: 24px;
+            background: #2c2926;
         }
 
-        .video-order {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: #948294;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .video-title {
-            font-size: 16px;
+        .player-title {
+            font-size: 20px;
             font-weight: 700;
             color: #f0e9df;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             line-height: 1.4;
         }
 
-        .video-duration {
+        .player-meta {
             font-size: 13px;
             color: #9c8f88;
-            font-style: italic;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Grille de thumbnails */
+        .thumbnails-section {
+            margin-top: 40px;
+        }
+
+        .thumbnails-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            background: #2c2926;
+            border: 2px solid #3a3532;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            overflow: hidden;
+            background: #1c1a19;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-duration {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #f0e9df;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .thumbnail-number {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #948294;
+            color: #1c1a19;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .thumbnail-info {
+            padding: 12px;
+            background: #2c2926;
+        }
+
+        .thumbnail-title {
+            font-size: 11px;
+            color: #f0e9df;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         footer {
@@ -117,12 +202,21 @@
         }
 
         @media (max-width: 768px) {
-            .grid {
-                grid-template-columns: 1fr;
+            .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 12px;
             }
 
             h1 {
                 font-size: 24px;
+            }
+
+            .player-info {
+                padding: 16px;
+            }
+
+            .player-title {
+                font-size: 16px;
             }
         }
     </style>
@@ -130,11 +224,28 @@
 <body>
     <div class="container">
         <header>
-            <h1>Liste Crâne</h1>
+            <h1>Le Crâne</h1>
             <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
         </header>
 
-        <div class="grid" id="videoGrid"></div>
+        <!-- Lecteur principal -->
+        <div class="player-section">
+            <div class="player-wrapper">
+                <iframe id="mainPlayer" width="560" height="315" src="https://www.youtube.com/embed/aLAzKbbahgk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <div class="player-info">
+                <div class="player-title" id="playerTitle">MO2022 - B2 - 01 Crane Partie suppérieur P1</div>
+                <div class="player-meta">
+                    <span id="playerDuration">Durée : 6:30</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grille de thumbnails -->
+        <div class="thumbnails-section">
+            <div class="thumbnails-title">Sélectionne une vidéo</div>
+            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+        </div>
 
         <footer>
             Ressources vidéo — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
@@ -152,21 +263,39 @@
             {"section":"Liste Crâne","ordre":7,"titre":"MO2022 - B2 - 05 Crane Partie inférieure Dents P1","duree_s":385,"duree":"6:25","date_upload":"2022-03-28T16:29:59","url":"https://www.youtube.com/watch?v=D25nrYyNC4k","video_id":"D25nrYyNC4k","miniature":"https://img.youtube.com/vi/D25nrYyNC4k/hqdefault.jpg"}
         ];
 
-        const grid = document.getElementById('videoGrid');
-        
-        videos.forEach(video => {
+        const grid = document.getElementById('thumbnailsGrid');
+        const player = document.getElementById('mainPlayer');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerDuration = document.getElementById('playerDuration');
+
+        // Créer les thumbnails
+        videos.forEach((video, index) => {
             const card = document.createElement('div');
-            card.className = 'video-card';
+            card.className = 'thumbnail-card';
+            if (index === 0) card.classList.add('active');
+            
             card.innerHTML = `
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/${video.video_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="thumbnail-image">
+                    <img src="${video.miniature}" alt="${video.titre}">
+                    <div class="thumbnail-number">${video.ordre}</div>
+                    <div class="thumbnail-duration">${video.duree}</div>
                 </div>
-                <div class="video-content">
-                    <div class="video-order">Vidéo ${video.ordre}</div>
-                    <div class="video-title">${video.titre}</div>
-                    <div class="video-duration">Durée : ${video.duree}</div>
+                <div class="thumbnail-info">
+                    <div class="thumbnail-title">${video.titre}</div>
                 </div>
             `;
+
+            card.addEventListener('click', () => {
+                // Charger la vidéo
+                player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                playerTitle.textContent = video.titre;
+                playerDuration.textContent = `Durée : ${video.duree}`;
+
+                // Mise à jour état actif
+                document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+            });
+
             grid.appendChild(card);
         });
     </script>
