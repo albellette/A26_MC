@@ -486,7 +486,7 @@
                     
                     card.innerHTML = `
                         <div class="thumbnail-image">
-                            <img src="https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg" alt="${video.titre}">
+                            <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" alt="${video.titre}" onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
                             <div class="thumbnail-number">${video.ordre}</div>
                         </div>
                         <div class="thumbnail-info">
