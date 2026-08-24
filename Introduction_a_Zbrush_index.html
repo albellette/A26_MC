@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction à ZBrush</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #1c1a19;
+            color: #f0e9df;
+            padding: 60px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 12px;
+        }
+
+        .subtitle {
+            color: #9c8f88;
+            font-size: 16px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .program-info {
+            color: #635c56;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .separator {
+            width: 60px;
+            height: 2px;
+            background: #948294;
+            margin: 30px auto;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-bottom: 1px solid #3a3532;
+            padding-bottom: 16px;
+        }
+
+        .tab-btn {
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            color: #9c8f88;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            border-color: #948294;
+            color: #f0e9df;
+        }
+
+        .tab-btn.active {
+            background: #948294;
+            color: #1c1a19;
+            border-color: #948294;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: #9c8f88;
+            font-size: 14px;
+        }
+
+        .player-section {
+            margin-bottom: 50px;
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #1c1a19;
+            overflow: hidden;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-info {
+            padding: 24px;
+            background: #2c2926;
+        }
+
+        .player-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .player-meta {
+            font-size: 13px;
+            color: #9c8f88;
+        }
+
+        .thumbnails-section {
+            margin-top: 40px;
+        }
+
+        .thumbnails-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            background: #2c2926;
+            border: 2px solid #3a3532;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background: #1c1a19;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-number {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #948294;
+            color: #1c1a19;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .thumbnail-info {
+            padding: 12px;
+            background: #2c2926;
+        }
+
+        .thumbnail-title {
+            font-size: 11px;
+            color: #f0e9df;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .back-link a {
+            color: #948294;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .back-link a:hover {
+            color: #f0e9df;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3532;
+            text-align: center;
+            font-size: 12px;
+            color: #6b645c;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            padding: 40px 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a href="index.html">← Retour aux ressources complètes</a>
+        </div>
+
+        <header>
+            <h1>Introduction à ZBrush</h1>
+            <p class="subtitle">ZBrush Fondamentaux</p>
+            <p class="program-info">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
+            <div class="separator"></div>
+        </header>
+
+        <!-- Onglets de navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="navigation">Navigation</button>
+            <button class="tab-btn" data-tab="canva">Canvas</button>
+            <button class="tab-btn" data-tab="subtool">Subtool</button>
+            <button class="tab-btn" data-tab="primitive">Primitive et Gizmo</button>
+            <button class="tab-btn" data-tab="interface">Prise en main</button>
+        </div>
+
+        <!-- Section Navigation -->
+        <div id="navigation" class="content-section active">
+            <div class="section-header">
+                <h2>Navigation</h2>
+                <p>Maîtriser les contrôles de navigation ZBrush</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-navigation" width="560" height="315" src="https://www.youtube.com/embed/ApI-aN4M-z4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-navigation">Navigation 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-navigation"></div>
+            </div>
+        </div>
+
+        <!-- Section Canva -->
+        <div id="canva" class="content-section">
+            <div class="section-header">
+                <h2>Canvas</h2>
+                <p>Configuration et affichage du canvas</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-canva" width="560" height="315" src="https://www.youtube.com/embed/-nwfBaDxp9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-canva">Canvas 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-canva"></div>
+            </div>
+        </div>
+
+        <!-- Section Subtool -->
+        <div id="subtool" class="content-section">
+            <div class="section-header">
+                <h2>Subtool</h2>
+                <p>Gestion des subtools et organisation</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-subtool" width="560" height="315" src="https://www.youtube.com/embed/_maH3opkfsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-subtool">Subtool 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-subtool"></div>
+            </div>
+        </div>
+
+        <!-- Section Primitive et Gizmo -->
+        <div id="primitive" class="content-section">
+            <div class="section-header">
+                <h2>Primitive et Gizmo</h2>
+                <p>Utiliser les primitives et le gizmo de transformation</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-primitive" width="560" height="315" src="https://www.youtube.com/embed/kZiOAet9vCU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-primitive">Primitive et Gizmo 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-primitive"></div>
+            </div>
+        </div>
+
+        <!-- Section Prise en main de l'interface -->
+        <div id="interface" class="content-section">
+            <div class="section-header">
+                <h2>Prise en main de l'interface</h2>
+                <p>Personnalisation et configuration de l'interface</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-interface" width="560" height="315" src="https://www.youtube.com/embed/CF8Zh2Yp7Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-interface">Interface 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-interface"></div>
+            </div>
+        </div>
+
+        <footer>
+            Ressources pédagogiques — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+        </footer>
+    </div>
+
+    <script>
+        // Données vidéos intégrées
+        const videosData = {
+            navigation: [
+                {"ordre":1,"titre":"PAN Alt+Clic Gauche","duree":"0:11","video_id":"ApI-aN4M-z4"},
+                {"ordre":2,"titre":"Rotation Clic Droit","duree":"0:12","video_id":"QiYeTb8yD4M"},
+                {"ordre":3,"titre":"ROTATION 45deg Clic droit +Shift","duree":"0:20","video_id":"rl04I5-al4U"},
+                {"ordre":4,"titre":"ZOOM Ctrl+Clic Droit","duree":"0:13","video_id":"qCmU-TtRdAY"},
+                {"ordre":5,"titre":"FOCUS Touche F","duree":"0:11","video_id":"LZlraSsURuY"}
+            ],
+            canva: [
+                {"ordre":1,"titre":"Activer la symétrie","video_id":"-nwfBaDxp9o"},
+                {"ordre":2,"titre":"Afficher le maillage et les polygroups","video_id":"St3FAQlRrEQ"},
+                {"ordre":3,"titre":"Afficher la grille","video_id":"SEv2dk1cyYM"},
+                {"ordre":4,"titre":"Afficher le mode Perspective ou Orthographique","video_id":"Jv_wteCYE7U"}
+            ],
+            subtool: [
+                {"ordre":1,"titre":"Gestion des subtools","video_id":"_maH3opkfsU"},
+                {"ordre":2,"titre":"Ajouter des subtools","video_id":"e83tUoQ8IwQ"},
+                {"ordre":3,"titre":"Sélection des subtoos","video_id":"gTJ2KhN3R3A"},
+                {"ordre":4,"titre":"Split Subtool","video_id":"h6BDYKfurq8"},
+                {"ordre":5,"titre":"Merge Subtool","video_id":"Wmh1Kksp-qQ"}
+            ],
+            primitive: [
+                {"ordre":1,"titre":"Activer le Gizmo","video_id":"kZiOAet9vCU"},
+                {"ordre":2,"titre":"Translation Rotation Scale","video_id":"11CPMKpDzwA"},
+                {"ordre":3,"titre":"Modifier une primitive","video_id":"4s2GAuMPzao"},
+                {"ordre":4,"titre":"Sélectionner une primitive","video_id":"XDg-z4kq_hs"},
+                {"ordre":5,"titre":"Transformer une primitive en object sculptable","video_id":"sxMgkQslx4Q"}
+            ],
+            interface: [
+                {"ordre":1,"titre":"Déplacer les boutons de l'interfaces","video_id":"CF8Zh2Yp7Qc"},
+                {"ordre":2,"titre":"Changer l'interface à sa guise","video_id":"jhxOdBFH2g4"},
+                {"ordre":3,"titre":"Ajuster la taille du canvas","video_id":"k99FAX2zc5A"},
+                {"ordre":4,"titre":"Taille des icones et du textes1","video_id":"-WeGop1OxEg"},
+                {"ordre":5,"titre":"Suprimer le dégradé du canevas","video_id":"W2MMipQOEPU"},
+                {"ordre":6,"titre":"Effacer le CANEVAS Ctrl+N","video_id":"0x9xxGee-Fo"}
+            ]
+        };
+
+        // Initialiser les grilles de vidéos
+        function initializeGrids() {
+            for (const [section, videos] of Object.entries(videosData)) {
+                const grid = document.getElementById(`grid-${section}`);
+                const player = document.getElementById(`player-${section}`);
+                const title = document.getElementById(`title-${section}`);
+
+                videos.forEach((video, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'thumbnail-card';
+                    if (index === 0) card.classList.add('active');
+                    
+                    card.innerHTML = `
+                        <div class="thumbnail-image">
+                            <img src="https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg" alt="${video.titre}">
+                            <div class="thumbnail-number">${video.ordre}</div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">${video.titre}</div>
+                        </div>
+                    `;
+
+                    card.addEventListener('click', () => {
+                        player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                        title.textContent = video.titre;
+                        
+                        document.querySelectorAll(`#grid-${section} .thumbnail-card`).forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                    });
+
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Système d'onglets
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                
+                // Masquer toutes les sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Afficher la section sélectionnée
+                document.getElementById(tabName).classList.add('active');
+                
+                // Mettre à jour les boutons
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+                
+                // Scroll vers le haut
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Initialiser au chargement
+        document.addEventListener('DOMContentLoaded', initializeGrids);
+    </script>
+</body>
+</html>
