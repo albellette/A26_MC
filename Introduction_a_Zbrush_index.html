@@ -315,36 +315,17 @@
 
         <!-- Onglets de navigation -->
         <div class="tabs">
-            <button class="tab-btn active" data-tab="interface">Prise en main</button>
-            <button class="tab-btn" data-tab="navigation">Navigation</button>
+            <button class="tab-btn active" data-tab="navigation">Navigation</button>
             <button class="tab-btn" data-tab="canva">Canvas</button>
-            <button class="tab-btn" data-tab="primitive">Primitive et Gizmo</button>
             <button class="tab-btn" data-tab="subtool">Subtool</button>
-        </div>
-
-        <!-- Section Prise en main de l'interface -->
-        <div id="interface" class="content-section active">
-            <div class="section-header">
-                <h2>Prise en main de l'interface</h2>
-                <p>Personnalisation et configuration de l'interface</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-interface" width="560" height="315" src="https://www.youtube.com/embed/CF8Zh2Yp7Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-interface">Interface 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-interface"></div>
-            </div>
+            <button class="tab-btn" data-tab="primitive">Primitive et Gizmo</button>
+            <button class="tab-btn" data-tab="interface">Prise en main</button>
+            <button class="tab-btn" data-tab="polygroups">Les polygroups</button>
+            <button class="tab-btn" data-tab="mask">Les Mask</button>
         </div>
 
         <!-- Section Navigation -->
-        <div id="navigation" class="content-section">
+        <div id="navigation" class="content-section active">
             <div class="section-header">
                 <h2>Navigation</h2>
                 <p>Maîtriser les contrôles de navigation ZBrush</p>
@@ -385,27 +366,6 @@
             </div>
         </div>
 
-        <!-- Section Primitive et Gizmo -->
-        <div id="primitive" class="content-section">
-            <div class="section-header">
-                <h2>Primitive et Gizmo</h2>
-                <p>Utiliser les primitives et le gizmo de transformation</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-primitive" width="560" height="315" src="https://www.youtube.com/embed/kZiOAet9vCU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-primitive">Primitive et Gizmo 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-primitive"></div>
-            </div>
-        </div>
-
         <!-- Section Subtool -->
         <div id="subtool" class="content-section">
             <div class="section-header">
@@ -427,6 +387,90 @@
             </div>
         </div>
 
+        <!-- Section Primitive et Gizmo -->
+        <div id="primitive" class="content-section">
+            <div class="section-header">
+                <h2>Primitive et Gizmo</h2>
+                <p>Utiliser les primitives et le gizmo de transformation</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-primitive" width="560" height="315" src="https://www.youtube.com/embed/kZiOAet9vCU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-primitive">Primitive et Gizmo 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-primitive"></div>
+            </div>
+        </div>
+
+        <!-- Section Prise en main de l'interface -->
+        <div id="interface" class="content-section">
+            <div class="section-header">
+                <h2>Prise en main de l'interface</h2>
+                <p>Personnalisation et configuration de l'interface</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-interface" width="560" height="315" src="https://www.youtube.com/embed/CF8Zh2Yp7Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-interface">Interface 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-interface"></div>
+            </div>
+        </div>
+
+        <!-- Section Les polygroups -->
+        <div id="polygroups" class="content-section">
+            <div class="section-header">
+                <h2>Les polygroups</h2>
+                <p>Créer et gérer les polygroups</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-polygroups" width="560" height="315" src="https://www.youtube.com/embed/wrRCt7FcOpQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-polygroups">Polygroups 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-polygroups"></div>
+            </div>
+        </div>
+
+        <!-- Section Les Mask -->
+        <div id="mask" class="content-section">
+            <div class="section-header">
+                <h2>Les Mask</h2>
+                <p>Techniques de masquage et gestion des masks</p>
+            </div>
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player-mask" width="560" height="315" src="https://www.youtube.com/embed/AkFeivxhHvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="title-mask">Mask 1</div>
+                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                </div>
+            </div>
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid-mask"></div>
+            </div>
+        </div>
+
         <footer>
             Ressources pédagogiques — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
         </footer>
@@ -435,14 +479,6 @@
     <script>
         // Données vidéos intégrées
         const videosData = {
-            interface: [
-                {"ordre":1,"titre":"Déplacer les boutons de l'interfaces","video_id":"CF8Zh2Yp7Qc"},
-                {"ordre":2,"titre":"Changer l'interface à sa guise","video_id":"jhxOdBFH2g4"},
-                {"ordre":3,"titre":"Ajuster la taille du canvas","video_id":"k99FAX2zc5A"},
-                {"ordre":4,"titre":"Taille des icones et du textes1","video_id":"-WeGop1OxEg"},
-                {"ordre":5,"titre":"Suprimer le dégradé du canevas","video_id":"W2MMipQOEPU"},
-                {"ordre":6,"titre":"Effacer le CANEVAS Ctrl+N","video_id":"0x9xxGee-Fo"}
-            ],
             navigation: [
                 {"ordre":1,"titre":"PAN Alt+Clic Gauche","duree":"0:11","video_id":"ApI-aN4M-z4"},
                 {"ordre":2,"titre":"Rotation Clic Droit","duree":"0:12","video_id":"QiYeTb8yD4M"},
@@ -456,6 +492,13 @@
                 {"ordre":3,"titre":"Afficher la grille","video_id":"SEv2dk1cyYM"},
                 {"ordre":4,"titre":"Afficher le mode Perspective ou Orthographique","video_id":"Jv_wteCYE7U"}
             ],
+            subtool: [
+                {"ordre":1,"titre":"Gestion des subtools","video_id":"_maH3opkfsU"},
+                {"ordre":2,"titre":"Ajouter des subtools","video_id":"e83tUoQ8IwQ"},
+                {"ordre":3,"titre":"Sélection des subtoos","video_id":"gTJ2KhN3R3A"},
+                {"ordre":4,"titre":"Split Subtool","video_id":"h6BDYKfurq8"},
+                {"ordre":5,"titre":"Merge Subtool","video_id":"Wmh1Kksp-qQ"}
+            ],
             primitive: [
                 {"ordre":1,"titre":"Activer le Gizmo","video_id":"kZiOAet9vCU"},
                 {"ordre":2,"titre":"Translation Rotation Scale","video_id":"11CPMKpDzwA"},
@@ -463,12 +506,30 @@
                 {"ordre":4,"titre":"Sélectionner une primitive","video_id":"XDg-z4kq_hs"},
                 {"ordre":5,"titre":"Transformer une primitive en object sculptable","video_id":"sxMgkQslx4Q"}
             ],
-            subtool: [
-                {"ordre":1,"titre":"Gestion des subtools","video_id":"_maH3opkfsU"},
-                {"ordre":2,"titre":"Ajouter des subtools","video_id":"e83tUoQ8IwQ"},
-                {"ordre":3,"titre":"Sélection des subtoos","video_id":"gTJ2KhN3R3A"},
-                {"ordre":4,"titre":"Split Subtool","video_id":"h6BDYKfurq8"},
-                {"ordre":5,"titre":"Merge Subtool","video_id":"Wmh1Kksp-qQ"}
+            interface: [
+                {"ordre":1,"titre":"Déplacer les boutons de l'interfaces","video_id":"CF8Zh2Yp7Qc"},
+                {"ordre":2,"titre":"Changer l'interface à sa guise","video_id":"jhxOdBFH2g4"},
+                {"ordre":3,"titre":"Ajuster la taille du canvas","video_id":"k99FAX2zc5A"},
+                {"ordre":4,"titre":"Taille des icones et du textes1","video_id":"-WeGop1OxEg"},
+                {"ordre":5,"titre":"Suprimer le dégradé du canevas","video_id":"W2MMipQOEPU"},
+                {"ordre":6,"titre":"Effacer le CANEVAS Ctrl+N","video_id":"0x9xxGee-Fo"}
+            ],
+            polygroups: [
+                {"ordre":1,"titre":"Créer des polygroups via un mask","duree":"0:35","video_id":"wrRCt7FcOpQ"},
+                {"ordre":2,"titre":"Les polygroups","duree":"0:43","video_id":"XGy3WBWfj6U"},
+                {"ordre":3,"titre":"Utiliser Auto Groups","duree":"0:45","video_id":"YI77PaYGEI4"},
+                {"ordre":4,"titre":"Utiliser Group Visible","duree":"0:35","video_id":"AQ1d37w1kHE"}
+            ],
+            mask: [
+                {"ordre":1,"titre":"Créer un mask avec un boite de sélection","duree":"0:27","video_id":"AkFeivxhHvo"},
+                {"ordre":2,"titre":"Créer un mask à l'aide de la brosse","duree":"0:25","video_id":"Yqnr8tIswHo"},
+                {"ordre":3,"titre":"Créer un mask avec le lasso","duree":"0:26","video_id":"kGdDULtyeEE"},
+                {"ordre":4,"titre":"Créer un mask avec la sélection en cercle","duree":"0:32","video_id":"w6B0j_m8w_E"},
+                {"ordre":5,"titre":"Créer un mask avec la Curve","duree":"1:06","video_id":"XJYOHMuRC5M"},
+                {"ordre":6,"titre":"Déplacer le mask avec la touche barre d'espacement","duree":"0:35","video_id":"nuJFGmeM_R0"},
+                {"ordre":7,"titre":"La barre des Mask","duree":"0:17","video_id":"x_jgAJX8mBY"},
+                {"ordre":8,"titre":"Créer un mask via les polygroup et le Gizmo","duree":"0:47","video_id":"RQbEeJPW3Sg"},
+                {"ordre":9,"titre":"Le menu mask","duree":"1:00","video_id":"YN5GyNpaLzI"}
             ]
         };
 
