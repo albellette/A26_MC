@@ -15,81 +15,111 @@
             font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             background: #1c1a19;
             color: #f0e9df;
-            padding: 60px 20px;
             min-height: 100vh;
+            display: flex;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .sidebar {
+            width: 280px;
+            background: #2c2926;
+            border-right: 1px solid #3a3532;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            left: 0;
+            top: 0;
+        }
+
+        .back-link {
+            margin-bottom: 30px;
+        }
+
+        .back-link a {
+            color: #948294;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-link a:hover {
+            color: #f0e9df;
         }
 
         header {
-            text-align: center;
             margin-bottom: 50px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 22px;
             font-weight: 800;
             color: #f0e9df;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
         .subtitle {
             color: #9c8f88;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 400;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .program-info {
             color: #635c56;
-            font-size: 13px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .separator {
-            width: 60px;
-            height: 2px;
-            background: #948294;
-            margin: 30px auto;
+            letter-spacing: 0.08em;
         }
 
         .tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-            border-bottom: 1px solid #3a3532;
-            padding-bottom: 16px;
+            flex-direction: column;
+            gap: 6px;
         }
 
         .tab-btn {
-            background: #2c2926;
+            background: #1c1a19;
             border: 1px solid #3a3532;
             color: #9c8f88;
-            padding: 12px 20px;
+            padding: 10px 14px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             transition: all 0.2s ease;
             text-decoration: none;
-            white-space: nowrap;
+            text-align: left;
+            white-space: normal;
         }
 
         .tab-btn:hover {
             border-color: #948294;
             color: #f0e9df;
+            background: #3a3532;
         }
 
         .tab-btn.active {
             background: #948294;
             color: #1c1a19;
             border-color: #948294;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .content-section {
@@ -107,7 +137,7 @@
         }
 
         .section-header h2 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 800;
             color: #f0e9df;
             margin-bottom: 8px;
@@ -252,23 +282,6 @@
             overflow: hidden;
         }
 
-        .back-link {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .back-link a {
-            color: #948294;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .back-link a:hover {
-            color: #f0e9df;
-        }
-
         footer {
             margin-top: 80px;
             padding-top: 30px;
@@ -278,39 +291,90 @@
             color: #6b645c;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
             }
 
-            .tabs {
+            .main-content {
+                margin-left: 240px;
+                padding: 30px 15px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
                 flex-direction: column;
             }
 
-            .tab-btn {
+            .sidebar {
                 width: 100%;
-                text-align: center;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #3a3532;
+                padding: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+
+            .tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                flex: 1;
+                min-width: 120px;
             }
 
             .thumbnails-grid {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
             }
 
-            padding: 40px 20px;
+            .section-header h2 {
+                font-size: 20px;
+            }
+        }
+
+        /* Scrollbar styling */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #1c1a19;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #948294;
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #c9bfae;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Bande latérale gauche -->
+    <div class="sidebar">
         <div class="back-link">
-            <a href="index.html">← Retour aux ressources complètes</a>
+            <a href="index.html">← Retour</a>
         </div>
 
         <header>
             <h1>Introduction à ZBrush</h1>
-            <p class="subtitle">ZBrush Fondamentaux</p>
-            <p class="program-info">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
-            <div class="separator"></div>
+            <p class="subtitle">Fondamentaux</p>
+            <p class="program-info">574-3X6-LI</p>
         </header>
 
         <!-- Onglets de navigation -->
@@ -320,182 +384,187 @@
             <button class="tab-btn" data-tab="subtool">Subtool</button>
             <button class="tab-btn" data-tab="primitive">Primitive et Gizmo</button>
             <button class="tab-btn" data-tab="interface">Prise en main</button>
-            <button class="tab-btn" data-tab="polygroups">Les polygroups</button>
-            <button class="tab-btn" data-tab="mask">Les Mask</button>
+            <button class="tab-btn" data-tab="polygroups">Polygroups</button>
+            <button class="tab-btn" data-tab="mask">Mask</button>
             <button class="tab-btn" data-tab="dynamesh">Dynamesh et ZRemesher</button>
         </div>
+    </div>
 
-        <!-- Section Navigation -->
-        <div id="navigation" class="content-section active">
-            <div class="section-header">
-                <h2>Navigation</h2>
-                <p>Maîtriser les contrôles de navigation ZBrush</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-navigation" width="560" height="315" src="https://www.youtube.com/embed/ApI-aN4M-z4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Section Navigation -->
+            <div id="navigation" class="content-section active">
+                <div class="section-header">
+                    <h2>Navigation</h2>
+                    <p>Maîtriser les contrôles de navigation ZBrush</p>
                 </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-navigation">Navigation 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-navigation" width="560" height="315" src="https://www.youtube.com/embed/ApI-aN4M-z4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-navigation">Navigation 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-navigation"></div>
                 </div>
             </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-navigation"></div>
+
+            <!-- Section Canva -->
+            <div id="canva" class="content-section">
+                <div class="section-header">
+                    <h2>Canvas</h2>
+                    <p>Configuration et affichage du canvas</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-canva" width="560" height="315" src="https://www.youtube.com/embed/-nwfBaDxp9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-canva">Canvas 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-canva"></div>
+                </div>
             </div>
+
+            <!-- Section Subtool -->
+            <div id="subtool" class="content-section">
+                <div class="section-header">
+                    <h2>Subtool</h2>
+                    <p>Gestion des subtools et organisation</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-subtool" width="560" height="315" src="https://www.youtube.com/embed/_maH3opkfsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-subtool">Subtool 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-subtool"></div>
+                </div>
+            </div>
+
+            <!-- Section Primitive et Gizmo -->
+            <div id="primitive" class="content-section">
+                <div class="section-header">
+                    <h2>Primitive et Gizmo</h2>
+                    <p>Utiliser les primitives et le gizmo de transformation</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-primitive" width="560" height="315" src="https://www.youtube.com/embed/kZiOAet9vCU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-primitive">Primitive et Gizmo 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-primitive"></div>
+                </div>
+            </div>
+
+            <!-- Section Prise en main de l'interface -->
+            <div id="interface" class="content-section">
+                <div class="section-header">
+                    <h2>Prise en main de l'interface</h2>
+                    <p>Personnalisation et configuration de l'interface</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-interface" width="560" height="315" src="https://www.youtube.com/embed/CF8Zh2Yp7Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-interface">Interface 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-interface"></div>
+                </div>
+            </div>
+
+            <!-- Section Les polygroups -->
+            <div id="polygroups" class="content-section">
+                <div class="section-header">
+                    <h2>Les polygroups</h2>
+                    <p>Créer et gérer les polygroups</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-polygroups" width="560" height="315" src="https://www.youtube.com/embed/wrRCt7FcOpQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-polygroups">Polygroups 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-polygroups"></div>
+                </div>
+            </div>
+
+            <!-- Section Les Mask -->
+            <div id="mask" class="content-section">
+                <div class="section-header">
+                    <h2>Les Mask</h2>
+                    <p>Techniques de masquage et gestion des masks</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-mask" width="560" height="315" src="https://www.youtube.com/embed/AkFeivxhHvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-mask">Mask 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-mask"></div>
+                </div>
+            </div>
+
+            <!-- Section Dynamesh et ZRemesher -->
+            <div id="dynamesh" class="content-section">
+                <div class="section-header">
+                    <h2>Dynamesh et ZRemesher</h2>
+                    <p>Retopologie dynamique et remaillage</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-dynamesh" width="560" height="315" src="https://www.youtube.com/embed/g5REC8iMf6s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-dynamesh">Dynamesh 1</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-dynamesh"></div>
+                </div>
+            </div>
+
+            <footer>
+                Ressources pédagogiques — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+            </footer>
         </div>
-
-        <!-- Section Canva -->
-        <div id="canva" class="content-section">
-            <div class="section-header">
-                <h2>Canvas</h2>
-                <p>Configuration et affichage du canvas</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-canva" width="560" height="315" src="https://www.youtube.com/embed/-nwfBaDxp9o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-canva">Canvas 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-canva"></div>
-            </div>
-        </div>
-
-        <!-- Section Subtool -->
-        <div id="subtool" class="content-section">
-            <div class="section-header">
-                <h2>Subtool</h2>
-                <p>Gestion des subtools et organisation</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-subtool" width="560" height="315" src="https://www.youtube.com/embed/_maH3opkfsU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-subtool">Subtool 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-subtool"></div>
-            </div>
-        </div>
-
-        <!-- Section Primitive et Gizmo -->
-        <div id="primitive" class="content-section">
-            <div class="section-header">
-                <h2>Primitive et Gizmo</h2>
-                <p>Utiliser les primitives et le gizmo de transformation</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-primitive" width="560" height="315" src="https://www.youtube.com/embed/kZiOAet9vCU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-primitive">Primitive et Gizmo 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-primitive"></div>
-            </div>
-        </div>
-
-        <!-- Section Prise en main de l'interface -->
-        <div id="interface" class="content-section">
-            <div class="section-header">
-                <h2>Prise en main de l'interface</h2>
-                <p>Personnalisation et configuration de l'interface</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-interface" width="560" height="315" src="https://www.youtube.com/embed/CF8Zh2Yp7Qc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-interface">Interface 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-interface"></div>
-            </div>
-        </div>
-
-        <!-- Section Les polygroups -->
-        <div id="polygroups" class="content-section">
-            <div class="section-header">
-                <h2>Les polygroups</h2>
-                <p>Créer et gérer les polygroups</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-polygroups" width="560" height="315" src="https://www.youtube.com/embed/wrRCt7FcOpQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-polygroups">Polygroups 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-polygroups"></div>
-            </div>
-        </div>
-
-        <!-- Section Les Mask -->
-        <div id="mask" class="content-section">
-            <div class="section-header">
-                <h2>Les Mask</h2>
-                <p>Techniques de masquage et gestion des masks</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-mask" width="560" height="315" src="https://www.youtube.com/embed/AkFeivxhHvo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-mask">Mask 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-mask"></div>
-            </div>
-        </div>
-
-        <!-- Section Dynamesh et ZRemesher -->
-        <div id="dynamesh" class="content-section">
-            <div class="section-header">
-                <h2>Dynamesh et ZRemesher</h2>
-                <p>Retopologie dynamique et remaillage</p>
-            </div>
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player-dynamesh" width="560" height="315" src="https://www.youtube.com/embed/g5REC8iMf6s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="title-dynamesh">Dynamesh 1</div>
-                    <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
-                </div>
-            </div>
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid-dynamesh"></div>
-            </div>
-        </div>
-
-        <footer>
-            Ressources pédagogiques — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
-        </footer>
     </div>
 
     <script>
@@ -555,6 +624,7 @@
             ],
             dynamesh: [
                 {"ordre":1,"titre":"ZRemesher","duree":"1:10","video_id":"g5REC8iMf6s"},
+                {"ordre":2,"titre":"Dynamesh","duree":"","video_id":"AvtWb0hFUhM"},
                 {"ordre":3,"titre":"Projection de Dynamesh vers ZRemesher","duree":"3:16","video_id":"cOXLgqWLEYc"}
             ]
         };
@@ -612,9 +682,6 @@
                     b.classList.remove('active');
                 });
                 btn.classList.add('active');
-                
-                // Scroll vers le haut
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
 
