@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloc 2 Morphologie de l'animal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #1c1a19;
+            color: #f0e9df;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: #2c2926;
+            border-right: 1px solid #3a3532;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            left: 0;
+            top: 0;
+        }
+
+        header {
+            margin-bottom: 50px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #9c8f88;
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .program-info {
+            color: #635c56;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tab-btn {
+            background: #1c1a19;
+            border: 1px solid #3a3532;
+            color: #9c8f88;
+            padding: 10px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            text-align: left;
+            white-space: normal;
+        }
+
+        .tab-btn:hover {
+            border-color: #948294;
+            color: #f0e9df;
+            background: #3a3532;
+        }
+
+        .tab-btn.active {
+            background: #948294;
+            color: #1c1a19;
+            border-color: #948294;
+        }
+
+        .tab-btn.checkpoint {
+            background: #635c56;
+            border-color: #948294;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #3a3532;
+        }
+
+        .tab-btn.checkpoint:hover {
+            background: #74676f;
+            color: #f0e9df;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: #9c8f88;
+            font-size: 14px;
+        }
+
+        .player-section {
+            margin-bottom: 50px;
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #1c1a19;
+            overflow: hidden;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-info {
+            padding: 24px;
+            background: #2c2926;
+        }
+
+        .player-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .player-meta {
+            font-size: 13px;
+            color: #9c8f88;
+        }
+
+        .thumbnails-section {
+            margin-top: 40px;
+        }
+
+        .thumbnails-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            background: #2c2926;
+            border: 2px solid #3a3532;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background: #1c1a19;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-number {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #948294;
+            color: #1c1a19;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .thumbnail-info {
+            padding: 12px;
+            background: #2c2926;
+        }
+
+        .thumbnail-title {
+            font-size: 11px;
+            color: #f0e9df;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .placeholder-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #9c8f88;
+            font-size: 14px;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3532;
+            text-align: center;
+            font-size: 12px;
+            color: #6b645c;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .main-content {
+                margin-left: 240px;
+                padding: 30px 15px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #3a3532;
+                padding: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+
+            .tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .section-header h2 {
+                font-size: 20px;
+            }
+        }
+
+        /* Scrollbar styling */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #1c1a19;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #948294;
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #c9bfae;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bande latérale gauche -->
+    <div class="sidebar">
+        <header>
+            <h1>Bloc 2<br><strong>Morphologie de l'animal</strong></h1>
+            <p class="program-info">574-3X6-LI</p>
+        </header>
+
+        <!-- Onglets de navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="morphologie">Morphologie</button>
+            <button class="tab-btn checkpoint" data-tab="checkpoint">🎯 Checkpoint</button>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Section Morphologie -->
+            <div id="morphologie" class="content-section active">
+                <div class="section-header">
+                    <h2>Morphologie de l'animal</h2>
+                    <p>Comprendre l'anatomie et la morphologie pour sculpter un animal convaincant</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-morphologie" width="560" height="315" src="https://www.youtube.com/embed/pAZWlgIUia0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-morphologie">Morphologie Introduction</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-morphologie"></div>
+                </div>
+            </div>
+
+            <!-- Section Checkpoint -->
+            <div id="checkpoint" class="content-section">
+                <div class="section-header">
+                    <h2>Atelier</h2>
+                    <p>Exercice pratique - Morphologie de l'animal</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/U6MQBnzVl8U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title">Atelier - Morphologie de l'animal</div>
+                        <div class="player-meta">Exercice à suivre en classe</div>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                Ressources pédagogiques — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Données vidéos
+        const videosData = {
+            morphologie: [
+                {"ordre":1,"titre":"Morphologie Introduction","duree":"0:42","video_id":"pAZWlgIUia0"},
+                {"ordre":2,"titre":"Morphologie Partie 1 - Comprendre l'animal","duree":"22:39","video_id":"7rFCMjUA8f4"},
+                {"ordre":3,"titre":"Morphologie Partie 2 - Les Os, les muscles, le gras et la peau.","duree":"8:19","video_id":"bbO8l1sX5_Y"},
+                {"ordre":4,"titre":"Morphologie Partie 3 : rassembler les informations pour réaliser l'animal","duree":"5:36","video_id":"SJ9a1qkNlWA"}
+            ]
+        };
+
+        // Initialiser les grilles de vidéos
+        function initializeGrids() {
+            for (const [section, videos] of Object.entries(videosData)) {
+                const grid = document.getElementById(`grid-${section}`);
+                const player = document.getElementById(`player-${section}`);
+                const title = document.getElementById(`title-${section}`);
+
+                videos.forEach((video, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'thumbnail-card';
+                    if (index === 0) card.classList.add('active');
+                    
+                    card.innerHTML = `
+                        <div class="thumbnail-image">
+                            <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" alt="${video.titre}" onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
+                            <div class="thumbnail-number">${video.ordre}</div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">${video.titre}</div>
+                        </div>
+                    `;
+
+                    card.addEventListener('click', () => {
+                        player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                        title.textContent = video.titre;
+                        
+                        document.querySelectorAll(`#grid-${section} .thumbnail-card`).forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                    });
+
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Système d'onglets
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                
+                // Masquer toutes les sections
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Afficher la section sélectionnée
+                document.getElementById(tabName).classList.add('active');
+                
+                // Mettre à jour les boutons
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+            });
+        });
+
+        // Initialiser au chargement
+        document.addEventListener('DOMContentLoaded', initializeGrids);
+    </script>
+</body>
+</html>
