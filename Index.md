@@ -108,6 +108,22 @@
             margin-top: 6px;
         }
 
+        .divider {
+            margin: 60px 0;
+            padding: 40px 0;
+            border-top: 2px solid #3a3532;
+            border-bottom: 2px solid #3a3532;
+            text-align: center;
+        }
+
+        .divider h3 {
+            font-size: 16px;
+            color: #948294;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
         footer {
             margin-top: 80px;
             padding-top: 30px;
@@ -134,14 +150,15 @@
     <div class="container">
         <header>
             <h1>Modèles de créatures</h1>
-            <p class="subtitle">Ressources vidéo</p>
+            <p class="subtitle">Ressources vidéo complètes</p>
             <p class="program-info">574-3X6-LI · Cégep Limoilou</p>
             <div class="separator"></div>
         </header>
 
+        <!-- Section Modèles de créatures -->
         <div class="sections">
-            <a href="Ressources_Squelette.html" class="section-card">
-                <h2>Squelette</h2>
+            <a href="Squelette.html" class="section-card">
+                <h2>Le Squelette</h2>
                 <p>Fondamentaux de la structure osseuse et de l'anatomie de base.</p>
                 <span class="badge">6 vidéos</span>
             </a>
@@ -174,6 +191,20 @@
                 <h2>Projection et textures</h2>
                 <p>Projection de détails, coordonnées UV, intégration textures dans le pipeline.</p>
                 <span class="badge">5 vidéos</span>
+            </a>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider">
+            <h3>Parcours de formation</h3>
+        </div>
+
+        <!-- Introduction à ZBrush -->
+        <div class="sections">
+            <a href="Introduction_a_Zbrush_index.html" class="section-card">
+                <h2>Introduction à ZBrush</h2>
+                <p>ZBrush Fondamentaux — Navigation, Interface, Primitive et Gizmo</p>
+                <span class="badge">3 sections</span>
             </a>
         </div>
 
