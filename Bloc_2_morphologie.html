@@ -45,13 +45,6 @@
             line-height: 1.2;
         }
 
-        .subtitle {
-            color: #9c8f88;
-            font-size: 12px;
-            font-weight: 400;
-            margin-bottom: 6px;
-        }
-
         .program-info {
             color: #635c56;
             font-size: 10px;
@@ -92,7 +85,7 @@
             border-color: #948294;
         }
 
-        .tab-btn.checkpoint {
+        .tab-btn.atelier {
             background: #635c56;
             border-color: #948294;
             margin-top: 12px;
@@ -100,9 +93,44 @@
             border-top: 1px solid #3a3532;
         }
 
-        .tab-btn.checkpoint:hover {
+        .tab-btn.atelier:hover {
             background: #74676f;
             color: #f0e9df;
+        }
+
+        .other-sections {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3532;
+        }
+
+        .other-sections h3 {
+            font-size: 11px;
+            color: #635c56;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-link {
+            display: block;
+            background: #1c1a19;
+            border: 1px solid #3a3532;
+            color: #9c8f88;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 6px;
+        }
+
+        .section-link:hover {
+            border-color: #948294;
+            color: #f0e9df;
+            background: #3a3532;
         }
 
         .main-content {
@@ -276,13 +304,6 @@
             overflow: hidden;
         }
 
-        .placeholder-message {
-            text-align: center;
-            padding: 60px 20px;
-            color: #9c8f88;
-            font-size: 14px;
-        }
-
         footer {
             margin-top: 80px;
             padding-top: 30px;
@@ -346,7 +367,6 @@
             }
         }
 
-        /* Scrollbar styling */
         .sidebar::-webkit-scrollbar {
             width: 6px;
         }
@@ -376,7 +396,15 @@
         <!-- Onglets de navigation -->
         <div class="tabs">
             <button class="tab-btn active" data-tab="morphologie">Morphologie</button>
-            <button class="tab-btn checkpoint" data-tab="checkpoint">🎯 Checkpoint</button>
+            <button class="tab-btn atelier" data-tab="atelier">🎯 Atelier</button>
+        </div>
+
+        <!-- Autres sections -->
+        <div class="other-sections">
+            <h3>Blocs de formation</h3>
+            <a href="index.html" class="section-link">← Retour à l'accueil</a>
+            <a href="Introduction_a_Zbrush_index.html" class="section-link">Introduction à ZBrush</a>
+            <a href="Bloc_2_morphologie.html" class="section-link">Bloc 2 - Morphologie</a>
         </div>
     </div>
 
@@ -404,8 +432,8 @@
                 </div>
             </div>
 
-            <!-- Section Checkpoint -->
-            <div id="checkpoint" class="content-section">
+            <!-- Section Atelier -->
+            <div id="atelier" class="content-section">
                 <div class="section-header">
                     <h2>Atelier</h2>
                     <p>Exercice pratique - Morphologie de l'animal</p>
@@ -491,6 +519,9 @@
                     b.classList.remove('active');
                 });
                 btn.classList.add('active');
+                
+                // Scroll vers le haut
+                window.scrollTo(0, 0);
             });
         });
 

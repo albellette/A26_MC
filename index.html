@@ -15,52 +15,173 @@
             font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             background: #1c1a19;
             color: #f0e9df;
-            padding: 60px 20px;
             min-height: 100vh;
+            display: flex;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        .sidebar {
+            width: 280px;
+            background: #2c2926;
+            border-right: 1px solid #3a3532;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            left: 0;
+            top: 0;
         }
 
         header {
-            text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
         }
 
         h1 {
-            font-size: 48px;
+            font-size: 22px;
             font-weight: 800;
             color: #f0e9df;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
         .subtitle {
             color: #9c8f88;
-            font-size: 16px;
+            font-size: 12px;
             font-weight: 400;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .program-info {
             color: #635c56;
-            font-size: 13px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
         }
 
-        .separator {
-            width: 60px;
-            height: 2px;
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tab-btn {
+            background: #1c1a19;
+            border: 1px solid #3a3532;
+            color: #9c8f88;
+            padding: 10px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            text-align: left;
+            white-space: normal;
+        }
+
+        .tab-btn:hover {
+            border-color: #948294;
+            color: #f0e9df;
+            background: #3a3532;
+        }
+
+        .tab-btn.active {
             background: #948294;
-            margin: 30px auto;
+            color: #1c1a19;
+            border-color: #948294;
         }
 
-        .sections {
+        .tab-btn.special {
+            background: #635c56;
+            border-color: #948294;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #3a3532;
+        }
+
+        .tab-btn.special:hover {
+            background: #74676f;
+            color: #f0e9df;
+        }
+
+        .other-sections {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3532;
+        }
+
+        .other-sections h3 {
+            font-size: 11px;
+            color: #635c56;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-link {
+            display: block;
+            background: #1c1a19;
+            border: 1px solid #3a3532;
+            color: #9c8f88;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 6px;
+        }
+
+        .section-link:hover {
+            border-color: #948294;
+            color: #f0e9df;
+            background: #3a3532;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: #9c8f88;
+            font-size: 14px;
+        }
+
+        .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
+            margin-bottom: 60px;
         }
 
         .section-card {
@@ -74,6 +195,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            cursor: pointer;
         }
 
         .section-card:hover {
@@ -83,7 +205,7 @@
             transform: translateY(-4px);
         }
 
-        .section-card h2 {
+        .section-card h3 {
             font-size: 18px;
             font-weight: 700;
             color: #f0e9df;
@@ -108,20 +230,64 @@
             margin-top: 6px;
         }
 
-        .divider {
-            margin: 60px 0;
-            padding: 40px 0;
-            border-top: 2px solid #3a3532;
-            border-bottom: 2px solid #3a3532;
-            text-align: center;
+        .intro-card {
+            background: #2c2926;
+            border: 2px solid #948294;
+            border-radius: 10px;
+            padding: 28px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            cursor: pointer;
         }
 
-        .divider h3 {
+        .intro-card:hover {
+            background: #3a3532;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.25);
+            transform: translateY(-4px);
+        }
+
+        .intro-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #f0e9df;
+        }
+
+        .intro-card p {
+            font-size: 13px;
+            color: #9c8f88;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .intro-card .badge {
+            display: inline-block;
+            background: #948294;
+            color: #1c1a19;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            align-self: flex-start;
+            margin-top: 6px;
+        }
+
+        .intro-section {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 2px solid #3a3532;
+        }
+
+        .intro-section h2 {
             font-size: 16px;
             color: #948294;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-weight: 600;
+            margin-bottom: 30px;
         }
 
         footer {
@@ -133,84 +299,260 @@
             color: #6b645c;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
             }
 
-            .sections {
+            .main-content {
+                margin-left: 240px;
+                padding: 30px 15px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #3a3532;
+                padding: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+
+            .tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .card-grid {
                 grid-template-columns: 1fr;
             }
 
-            padding: 40px 20px;
+            .section-header h2 {
+                font-size: 20px;
+            }
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #1c1a19;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #948294;
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #c9bfae;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Bande latérale gauche -->
+    <div class="sidebar">
         <header>
             <h1>Modèles de créatures</h1>
-            <p class="subtitle">Ressources vidéo complètes</p>
-            <p class="program-info">574-3X6-LI · Cégep Limoilou</p>
-            <div class="separator"></div>
+            <p class="subtitle">Ressources vidéo</p>
+            <p class="program-info">574-3X6-LI</p>
         </header>
 
-        <!-- Section Modèles de créatures -->
-        <div class="sections">
-            <a href="Squelette.html" class="section-card">
-                <h2>Le Squelette</h2>
-                <p>Fondamentaux de la structure osseuse et de l'anatomie de base.</p>
-                <span class="badge">6 vidéos</span>
-            </a>
-
-            <a href="Liste_Crane.html" class="section-card">
-                <h2>Le Crâne</h2>
-                <p>Analyse détaillée du crâne, de la mandibule aux ajustements proportionnels.</p>
-                <span class="badge">7 vidéos</span>
-            </a>
-
-            <a href="Les_Muscles.html" class="section-card">
-                <h2>Les Muscles</h2>
-                <p>Construction musculaire, zones abdominales, membres et transitions anatomiques.</p>
-                <span class="badge">11 vidéos</span>
-            </a>
-
-            <a href="La_peau_et_finaliser_le_modele.html" class="section-card">
-                <h2>La peau et finaliser</h2>
-                <p>Finalisation du modèle : détails de surface, oreilles, yeux, griffes, intégration.</p>
-                <span class="badge">17 vidéos</span>
-            </a>
-
-            <a href="La_topologie.html" class="section-card">
-                <h2>La topologie</h2>
-                <p>Passage de ZBrush à Maya, retopologie complète, UVs et optimisation maillage.</p>
-                <span class="badge">35 vidéos</span>
-            </a>
-
-            <a href="Projection_et_textures.html" class="section-card">
-                <h2>Projection et textures</h2>
-                <p>Projection de détails, coordonnées UV, intégration textures dans le pipeline.</p>
-                <span class="badge">5 vidéos</span>
-            </a>
+        <!-- Onglets de navigation -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="accueil">Accueil</button>
+            <button class="tab-btn" data-tab="squelette">Le Squelette</button>
+            <button class="tab-btn" data-tab="crane">Le Crâne</button>
+            <button class="tab-btn" data-tab="muscles">Les Muscles</button>
+            <button class="tab-btn" data-tab="peau">La peau et finaliser</button>
+            <button class="tab-btn" data-tab="topologie">La topologie</button>
+            <button class="tab-btn" data-tab="projection">Projection et textures</button>
+            <button class="tab-btn special" data-tab="intro">Introduction à ZBrush</button>
         </div>
 
-        <!-- Divider -->
-        <div class="divider">
-            <h3>Parcours de formation</h3>
+        <!-- Autres sections -->
+        <div class="other-sections">
+            <h3>Blocs de formation</h3>
+            <a href="Introduction_a_Zbrush_index.html" class="section-link">Introduction à ZBrush</a>
+            <a href="Bloc_2_morphologie.html" class="section-link">Bloc 2 - Morphologie</a>
         </div>
-
-        <!-- Introduction à ZBrush -->
-        <div class="sections">
-            <a href="Introduction_a_Zbrush_index.html" class="section-card">
-                <h2>Introduction à ZBrush</h2>
-                <p>ZBrush Fondamentaux — Navigation, Interface, Primitive et Gizmo</p>
-                <span class="badge">3 sections</span>
-            </a>
-        </div>
-
-        <footer>
-            Ressources vidéo · Alexandre Bellotto · Cégep Limoilou, programme 574.C0
-        </footer>
     </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Section Accueil -->
+            <div id="accueil" class="content-section active">
+                <div class="section-header">
+                    <h2>Modèles de créatures</h2>
+                    <p>Ressources vidéo complètes pour la sculpture 3D</p>
+                </div>
+                <div class="card-grid">
+                    <a href="#" onclick="switchTab('squelette'); return false;" class="section-card">
+                        <h3>Le Squelette</h3>
+                        <p>Fondamentaux de la structure osseuse et de l'anatomie de base.</p>
+                        <span class="badge">6 vidéos</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('crane'); return false;" class="section-card">
+                        <h3>Le Crâne</h3>
+                        <p>Analyse détaillée du crâne, de la mandibule aux ajustements proportionnels.</p>
+                        <span class="badge">7 vidéos</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('muscles'); return false;" class="section-card">
+                        <h3>Les Muscles</h3>
+                        <p>Construction musculaire, zones abdominales, membres et transitions anatomiques.</p>
+                        <span class="badge">11 vidéos</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('peau'); return false;" class="section-card">
+                        <h3>La peau et finaliser</h3>
+                        <p>Finalisation du modèle : détails de surface, oreilles, yeux, griffes, intégration.</p>
+                        <span class="badge">17 vidéos</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('topologie'); return false;" class="section-card">
+                        <h3>La topologie</h3>
+                        <p>Passage de ZBrush à Maya, retopologie complète, UVs et optimisation maillage.</p>
+                        <span class="badge">35 vidéos</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('projection'); return false;" class="section-card">
+                        <h3>Projection et textures</h3>
+                        <p>Projection de détails, coordonnées UV, intégration textures dans le pipeline.</p>
+                        <span class="badge">5 vidéos</span>
+                    </a>
+                </div>
+
+                <div class="intro-section">
+                    <h2>Parcours de formation</h2>
+                    <a href="#" onclick="switchTab('intro'); return false;" class="intro-card">
+                        <h3>Introduction à ZBrush</h3>
+                        <p>ZBrush Fondamentaux — Navigation, Interface, Primitive et Gizmo</p>
+                        <span class="badge">8 sections</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sections individuelles (contenu externe) -->
+            <div id="squelette" class="content-section">
+                <div class="section-header">
+                    <h2>Le Squelette</h2>
+                    <p>Fondamentaux de la structure osseuse et de l'anatomie de base.</p>
+                </div>
+                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Squelette.html</p>
+                <a href="Squelette.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <div id="crane" class="content-section">
+                <div class="section-header">
+                    <h2>Le Crâne</h2>
+                    <p>Analyse détaillée du crâne, de la mandibule aux ajustements proportionnels.</p>
+                </div>
+                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Liste_Crane.html</p>
+                <a href="Liste_Crane.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <div id="muscles" class="content-section">
+                <div class="section-header">
+                    <h2>Les Muscles</h2>
+                    <p>Construction musculaire, zones abdominales, membres et transitions anatomiques.</p>
+                </div>
+                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Les_Muscles.html</p>
+                <a href="Les_Muscles.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <div id="peau" class="content-section">
+                <div class="section-header">
+                    <h2>La peau et finaliser</h2>
+                    <p>Finalisation du modèle : détails de surface, oreilles, yeux, griffes, intégration.</p>
+                </div>
+                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis La_peau_et_finaliser_le_modele.html</p>
+                <a href="La_peau_et_finaliser_le_modele.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <div id="topologie" class="content-section">
+                <div class="section-header">
+                    <h2>La topologie</h2>
+                    <p>Passage de ZBrush à Maya, retopologie complète, UVs et optimisation maillage.</p>
+                </div>
+                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis La_topologie.html</p>
+                <a href="La_topologie.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <div id="projection" class="content-section">
+                <div class="section-header">
+                    <h2>Projection et textures</h2>
+                    <p>Projection de détails, coordonnées UV, intégration textures dans le pipeline.</p>
+                </div>
+                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Projection_et_textures.html</p>
+                <a href="Projection_et_textures.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <div id="intro" class="content-section">
+                <div class="section-header">
+                    <h2>Introduction à ZBrush</h2>
+                    <p>ZBrush Fondamentaux — Navigation, Interface, Primitive et Gizmo</p>
+                </div>
+                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Introduction_a_Zbrush_index.html</p>
+                <a href="Introduction_a_Zbrush_index.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <footer>
+                Ressources vidéo · Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            // Masquer toutes les sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Afficher la section sélectionnée
+            document.getElementById(tabName).classList.add('active');
+            
+            // Mettre à jour les boutons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            // Scroll vers le haut
+            window.scrollTo(0, 0);
+        }
+
+        // Système d'onglets
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchTab(btn.getAttribute('data-tab'));
+            });
+        });
+    </script>
 </body>
 </html>
