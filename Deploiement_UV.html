@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déploiement UV — Ressources Vidéo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: #1c1a19;
+            color: #f0e9df;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: #2c2926;
+            border-right: 1px solid #3a3532;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            left: 0;
+            top: 0;
+        }
+
+        header {
+            margin-bottom: 50px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            color: #9c8f88;
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .program-info {
+            color: #635c56;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tab-btn {
+            background: #1c1a19;
+            border: 1px solid #3a3532;
+            color: #9c8f88;
+            padding: 10px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            text-align: left;
+            white-space: normal;
+        }
+
+        .tab-btn:hover {
+            border-color: #948294;
+            color: #f0e9df;
+            background: #3a3532;
+        }
+
+        .tab-btn.active {
+            background: #948294;
+            color: #1c1a19;
+            border-color: #948294;
+        }
+
+        .other-sections {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3532;
+        }
+
+        .other-sections h3 {
+            font-size: 11px;
+            color: #635c56;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .section-link {
+            display: block;
+            background: #1c1a19;
+            border: 1px solid #3a3532;
+            color: #9c8f88;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 6px;
+        }
+
+        .section-link:hover {
+            border-color: #948294;
+            color: #f0e9df;
+            background: #3a3532;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: #9c8f88;
+            font-size: 14px;
+        }
+
+        .player-section {
+            margin-bottom: 50px;
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #1c1a19;
+            overflow: hidden;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .player-info {
+            padding: 24px;
+            background: #2c2926;
+        }
+
+        .player-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .player-meta {
+            font-size: 13px;
+            color: #9c8f88;
+        }
+
+        .thumbnails-section {
+            margin-top: 40px;
+        }
+
+        .thumbnails-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            background: #2c2926;
+            border: 2px solid #3a3532;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
+        }
+
+        .thumbnail-image {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            overflow: hidden;
+            background: #1c1a19;
+        }
+
+        .thumbnail-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-number {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            background: #948294;
+            color: #1c1a19;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .thumbnail-info {
+            padding: 12px;
+            background: #2c2926;
+        }
+
+        .thumbnail-title {
+            font-size: 11px;
+            color: #f0e9df;
+            font-weight: 600;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #3a3532;
+            text-align: center;
+            font-size: 12px;
+            color: #6b645c;
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .main-content {
+                margin-left: 240px;
+                padding: 30px 15px;
+            }
+
+            .section-header h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #3a3532;
+                padding: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
+            }
+
+            .tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .tab-btn {
+                flex: 1;
+                min-width: 120px;
+            }
+
+            .thumbnails-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .section-header h2 {
+                font-size: 20px;
+            }
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #1c1a19;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #948294;
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #c9bfae;
+        }
+    </style>
+</head>
+<body>
+    <!-- Bande latérale gauche -->
+    <div class="sidebar">
+        <header>
+            <h1>Déploiement UV</h1>
+            <p class="subtitle">Cartographie UV</p>
+            <p class="program-info">574-3X6-LI</p>
+        </header>
+
+        <!-- Navigation rapide -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="deploiement">Déploiement UV</button>
+        </div>
+
+        <!-- Ressources -->
+        <div class="other-sections">
+            <h3>Ressources</h3>
+            <a href="index.html" class="section-link">← Retour à l'accueil</a>
+            <a href="La_topologie.html" class="section-link">La topologie</a>
+        </div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Section Déploiement UV -->
+            <div id="deploiement" class="content-section active">
+                <div class="section-header">
+                    <h2>Déploiement UV</h2>
+                    <p>Cartographie et déploiement des coordonnées UV pour la texturisation</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-deploiement" width="560" height="315" src="https://www.youtube.com/embed/xI8L52juYTk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-deploiement">Déploiement UV</div>
+                        <div class="player-meta">Sélectionne une vidéo ci-dessous</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-deploiement"></div>
+                </div>
+            </div>
+
+            <footer>
+                Ressources vidéo · Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // Données vidéos (vidéos 27-35 de La topologie)
+        const videosData = {
+            deploiement: [
+                {"ordre":27,"titre":"Déploiement UV 1","video_id":"xI8L52juYTk"},
+                {"ordre":28,"titre":"Déploiement UV 2","video_id":"Vb2jvd4qKII"},
+                {"ordre":29,"titre":"Déploiement UV 3","video_id":"APAZBpYcB1c"},
+                {"ordre":30,"titre":"Déploiement UV 4","video_id":"tUpKgDFR5Wg"},
+                {"ordre":31,"titre":"Déploiement UV 5","video_id":"JQtV3QzHcvU"},
+                {"ordre":32,"titre":"Déploiement UV 6","video_id":"Tprd1A16BPo"},
+                {"ordre":33,"titre":"Déploiement UV 7","video_id":"FnejJ0hEowU"},
+                {"ordre":34,"titre":"Déploiement UV 8","video_id":"3a30Xi5cBws"},
+                {"ordre":35,"titre":"Déploiement UV 9","video_id":"3I01jB0oP20"}
+            ]
+        };
+
+        // Initialiser les grilles de vidéos
+        function initializeGrids() {
+            for (const [section, videos] of Object.entries(videosData)) {
+                const grid = document.getElementById(`grid-${section}`);
+                const player = document.getElementById(`player-${section}`);
+                const title = document.getElementById(`title-${section}`);
+
+                videos.forEach((video, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'thumbnail-card';
+                    if (index === 0) card.classList.add('active');
+                    
+                    card.innerHTML = `
+                        <div class="thumbnail-image">
+                            <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" alt="${video.titre}" onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
+                            <div class="thumbnail-number">${video.ordre}</div>
+                        </div>
+                        <div class="thumbnail-info">
+                            <div class="thumbnail-title">${video.titre}</div>
+                        </div>
+                    `;
+
+                    card.addEventListener('click', () => {
+                        player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                        title.textContent = video.titre;
+                        
+                        document.querySelectorAll(`#grid-${section} .thumbnail-card`).forEach(c => c.classList.remove('active'));
+                        card.classList.add('active');
+                    });
+
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Système d'onglets
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabName = btn.getAttribute('data-tab');
+                
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                document.getElementById(tabName).classList.add('active');
+                
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+                
+                window.scrollTo(0, 0);
+            });
+        });
+
+        // Initialiser au chargement
+        document.addEventListener('DOMContentLoaded', initializeGrids);
+    </script>
+</body>
+</html>
