@@ -298,12 +298,12 @@
 
     <script>
         const videos = [
-            {"ordre":1,"titre":"Squelette 1","type":"Démonstration","video_id":"ubak4FqeEEc","miniature":"https://img.youtube.com/vi/ubak4FqeEEc/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/ubak4FqeEEc/hqdefault.jpg'""},
-            {"ordre":2,"titre":"Squelette 2","type":"Démonstration","video_id":"0NDjYk3whfE","miniature":"https://img.youtube.com/vi/0NDjYk3whfE/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/0NDjYk3whfE/hqdefault.jpg'""},
-            {"ordre":3,"titre":"Squelette 3","type":"Démonstration","video_id":"0vehb2MzizQ","miniature":"https://img.youtube.com/vi/0vehb2MzizQ/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/0vehb2MzizQ/hqdefault.jpg'""},
-            {"ordre":4,"titre":"Squelette 4","type":"Démonstration","video_id":"t__8P2O9kCE","miniature":"https://img.youtube.com/vi/t__8P2O9kCE/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/t__8P2O9kCE/hqdefault.jpg'""},
-            {"ordre":5,"titre":"Squelette 5","type":"Démonstration","video_id":"XcL7rUe2gwQ","miniature":"https://img.youtube.com/vi/XcL7rUe2gwQ/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/XcL7rUe2gwQ/hqdefault.jpg'""},
-            {"ordre":6,"titre":"Squelette 6","type":"Démonstration","video_id":"WMdyUds95Zs","miniature":"https://img.youtube.com/vi/WMdyUds95Zs/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/WMdyUds95Zs/hqdefault.jpg'""}
+            {"ordre":1,"titre":"Squelette 1","type":"Démonstration","video_id":"ubak4FqeEEc"},
+            {"ordre":2,"titre":"Squelette 2","type":"Démonstration","video_id":"0NDjYk3whfE"},
+            {"ordre":3,"titre":"Squelette 3","type":"Démonstration","video_id":"0vehb2MzizQ"},
+            {"ordre":4,"titre":"Squelette 4","type":"Démonstration","video_id":"t__8P2O9kCE"},
+            {"ordre":5,"titre":"Squelette 5","type":"Démonstration","video_id":"XcL7rUe2gwQ"},
+            {"ordre":6,"titre":"Squelette 6","type":"Démonstration","video_id":"WMdyUds95Zs"}
         ];
 
         const grid = document.getElementById('thumbnailsGrid');
@@ -319,7 +319,7 @@
             
             card.innerHTML = `
                 <div class="thumbnail-image">
-                    <img src="${video.miniature}" alt="${video.titre}">
+                    <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" alt="${video.titre}" onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
                     <div class="thumbnail-number">${video.ordre}</div>
                 </div>
                 <div class="thumbnail-info">
