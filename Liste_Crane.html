@@ -23,6 +23,35 @@
             margin: 0 auto;
         }
 
+        .nav-menu {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #3a3532;
+        }
+
+        .nav-menu a {
+            color: #9c8f88;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #f0e9df;
+            background: #3a3532;
+        }
+
+        .nav-menu a.active {
+            color: #948294;
+            font-weight: 700;
+        }
+
         header {
             margin-bottom: 40px;
             border-bottom: 2px solid #948294;
@@ -42,7 +71,6 @@
             font-weight: 400;
         }
 
-        /* Lecteur principal */
         .player-section {
             margin-bottom: 50px;
             background: #2c2926;
@@ -55,7 +83,7 @@
         .player-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             background: #1c1a19;
             overflow: hidden;
         }
@@ -85,11 +113,8 @@
         .player-meta {
             font-size: 13px;
             color: #9c8f88;
-            display: flex;
-            gap: 20px;
         }
 
-        /* Grille de thumbnails */
         .thumbnails-section {
             margin-top: 40px;
         }
@@ -134,7 +159,7 @@
         .thumbnail-image {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 */
+            padding-bottom: 56.25%;
             overflow: hidden;
             background: #1c1a19;
         }
@@ -146,18 +171,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        .thumbnail-duration {
-            position: absolute;
-            bottom: 6px;
-            right: 6px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #f0e9df;
-            padding: 4px 8px;
-            font-size: 11px;
-            font-weight: 700;
-            border-radius: 3px;
         }
 
         .thumbnail-number {
@@ -192,64 +205,18 @@
             overflow: hidden;
         }
 
-        .nav-menu {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: #2c2926;
-            border: 1px solid #3a3532;
-            border-radius: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .nav-menu a {
-            font-size: 12px;
-            font-weight: 600;
-            color: #9c8f88;
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #f0e9df;
-            background: #3a3532;
-        }
-
-        .nav-menu a.active {
-            color: #f0e9df;
-            background: #948294;
-            color: #1c1a19;
-        }
-
         footer {
-            margin-top: 60px;
+            margin-top: 80px;
             padding-top: 30px;
             border-top: 1px solid #3a3532;
-            text-align: right;
-            font-size: 11px;
+            text-align: center;
+            font-size: 12px;
             color: #6b645c;
         }
 
         @media (max-width: 768px) {
             .thumbnails-grid {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 12px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .player-info {
-                padding: 16px;
-            }
-
-            .player-title {
-                font-size: 16px;
             }
         }
     </style>
@@ -269,25 +236,21 @@
 
         <header>
             <h1>Le Crâne</h1>
-            <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
+            <p class="subtitle">Structure du crâne et anatomie</p>
         </header>
 
-        <!-- Lecteur principal -->
         <div class="player-section">
             <div class="player-wrapper">
                 <iframe id="mainPlayer" width="560" height="315" src="https://www.youtube.com/embed/aLAzKbbahgk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="player-info">
-                <div class="player-title" id="playerTitle">MO2022 - B2 - 01 Crane Partie suppérieur P1</div>
-                <div class="player-meta">
-                    <span id="playerDuration">Durée : 6:30</span>
-                </div>
+                <div class="player-title" id="playerTitle">Crane Partie supérieur P1</div>
+                <div class="player-meta"><span id="playerDuration">Cliquez sur une vidéo pour la lancer</span></div>
             </div>
         </div>
 
-        <!-- Grille de thumbnails -->
         <div class="thumbnails-section">
-            <div class="thumbnails-title">Sélectionne une vidéo</div>
+            <div class="thumbnails-title">Vidéos disponibles</div>
             <div class="thumbnails-grid" id="thumbnailsGrid"></div>
         </div>
 
@@ -298,13 +261,13 @@
 
     <script>
         const videos = [
-            {"section":"Liste Crâne","ordre":1,"titre":"MO2022 - B2 - 01 Crane Partie suppérieur P1","duree_s":390,"duree":"6:30","date_upload":"2022-03-27T21:13:43","url":"https://www.youtube.com/watch?v=aLAzKbbahgk","video_id":"aLAzKbbahgk","miniature":"https://img.youtube.com/vi/aLAzKbbahgk/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/aLAzKbbahgk/hqdefault.jpg'""},
-            {"section":"Liste Crâne","ordre":2,"titre":"MO2022 - B2 - 02 Crane Partie suppérieur P2","duree_s":345,"duree":"5:45","date_upload":"2022-03-27T21:14:20","url":"https://www.youtube.com/watch?v=f8d0f-dbGiU","video_id":"f8d0f-dbGiU","miniature":"https://img.youtube.com/vi/f8d0f-dbGiU/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/f8d0f-dbGiU/hqdefault.jpg'""},
-            {"section":"Liste Crâne","ordre":3,"titre":"MO2022 - B2 - 04 Crane Partie inférieure (mandibule) P2","duree_s":145,"duree":"2:25","date_upload":"2022-03-28T15:17:55","url":"https://www.youtube.com/watch?v=AS185CZqipg","video_id":"AS185CZqipg","miniature":"https://img.youtube.com/vi/AS185CZqipg/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/AS185CZqipg/hqdefault.jpg'""},
-            {"section":"Liste Crâne","ordre":4,"titre":"MO2022 - B2 - 06 Crane Partie inférieure Dents P2","duree_s":294,"duree":"4:54","date_upload":"2022-03-28T15:19:10","url":"https://www.youtube.com/watch?v=wFPg0X1xi0s","video_id":"wFPg0X1xi0s","miniature":"https://img.youtube.com/vi/wFPg0X1xi0s/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/wFPg0X1xi0s/hqdefault.jpg'""},
-            {"section":"Liste Crâne","ordre":5,"titre":"MO2022 - B2 - 07 Ajuster le crane au reste du corps","duree_s":68,"duree":"1:08","date_upload":"2022-03-28T15:19:18","url":"https://www.youtube.com/watch?v=6AViSpMagJE","video_id":"6AViSpMagJE","miniature":"https://img.youtube.com/vi/6AViSpMagJE/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/6AViSpMagJE/hqdefault.jpg'""},
-            {"section":"Liste Crâne","ordre":6,"titre":"MO2022 - B2 - 03 Crane Partie inférieure (mandibule) P1","duree_s":339,"duree":"5:39","date_upload":"2022-03-28T16:29:15","url":"https://www.youtube.com/watch?v=xSl_Y7fZkdk","video_id":"xSl_Y7fZkdk","miniature":"https://img.youtube.com/vi/xSl_Y7fZkdk/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/xSl_Y7fZkdk/hqdefault.jpg'""},
-            {"section":"Liste Crâne","ordre":7,"titre":"MO2022 - B2 - 05 Crane Partie inférieure Dents P1","duree_s":385,"duree":"6:25","date_upload":"2022-03-28T16:29:59","url":"https://www.youtube.com/watch?v=D25nrYyNC4k","video_id":"D25nrYyNC4k","miniature":"https://img.youtube.com/vi/D25nrYyNC4k/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/D25nrYyNC4k/hqdefault.jpg'""}
+            {ordre:1, titre:"Crane Partie supérieur P1", video_id:"aLAzKbbahgk"},
+            {ordre:2, titre:"Crane Partie supérieur P2", video_id:"f8d0f-dbGiU"},
+            {ordre:3, titre:"Crane Partie inférieure (mandibule) P2", video_id:"AS185CZqipg"},
+            {ordre:4, titre:"Crane Partie inférieure Dents P2", video_id:"wFPg0X1xi0s"},
+            {ordre:5, titre:"Ajuster le crane au reste du corps", video_id:"6AViSpMagJE"},
+            {ordre:6, titre:"Crâne Contours extérieurs", video_id:"xSl_Y7fZkdk"},
+            {ordre:7, titre:"Crâne Final", video_id:"D25nrYyNC4k"}
         ];
 
         const grid = document.getElementById('thumbnailsGrid');
@@ -312,7 +275,6 @@
         const playerTitle = document.getElementById('playerTitle');
         const playerDuration = document.getElementById('playerDuration');
 
-        // Créer les thumbnails
         videos.forEach((video, index) => {
             const card = document.createElement('div');
             card.className = 'thumbnail-card';
@@ -320,9 +282,8 @@
             
             card.innerHTML = `
                 <div class="thumbnail-image">
-                    <img src="${video.miniature}" alt="${video.titre}">
+                    <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" alt="${video.titre}" onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
                     <div class="thumbnail-number">${video.ordre}</div>
-                    <div class="thumbnail-duration">${video.duree}</div>
                 </div>
                 <div class="thumbnail-info">
                     <div class="thumbnail-title">${video.titre}</div>
@@ -330,12 +291,10 @@
             `;
 
             card.addEventListener('click', () => {
-                // Charger la vidéo
                 player.src = `https://www.youtube.com/embed/${video.video_id}`;
                 playerTitle.textContent = video.titre;
-                playerDuration.textContent = `Durée : ${video.duree}`;
-
-                // Mise à jour état actif
+                playerDuration.textContent = `Vidéo ${video.ordre} / ${videos.length}`;
+                
                 document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
                 card.classList.add('active');
             });
