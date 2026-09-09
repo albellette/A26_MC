@@ -263,6 +263,7 @@
             <a href="Les_Muscles.html">Muscles</a>
             <a href="La_peau_et_finaliser_le_modele.html">Peau & Finalisation</a>
             <a href="La_topologie.html">Topologie</a>
+            <a href="Deploiement_UV.html">Déploiement UV</a>
             <a href="Projection_et_textures.html">Projection</a>
         </div>
 
@@ -297,13 +298,13 @@
 
     <script>
         const videos = [
-            {"section":"Liste Crâne","ordre":1,"titre":"MO2022 - B2 - 01 Crane Partie suppérieur P1","duree_s":390,"duree":"6:30","date_upload":"2022-03-27T21:13:43","url":"https://www.youtube.com/watch?v=aLAzKbbahgk","video_id":"aLAzKbbahgk","miniature":"https://img.youtube.com/vi/aLAzKbbahgk/hqdefault.jpg"},
-            {"section":"Liste Crâne","ordre":2,"titre":"MO2022 - B2 - 02 Crane Partie suppérieur P2","duree_s":345,"duree":"5:45","date_upload":"2022-03-27T21:14:20","url":"https://www.youtube.com/watch?v=f8d0f-dbGiU","video_id":"f8d0f-dbGiU","miniature":"https://img.youtube.com/vi/f8d0f-dbGiU/hqdefault.jpg"},
-            {"section":"Liste Crâne","ordre":3,"titre":"MO2022 - B2 - 04 Crane Partie inférieure (mandibule) P2","duree_s":145,"duree":"2:25","date_upload":"2022-03-28T15:17:55","url":"https://www.youtube.com/watch?v=AS185CZqipg","video_id":"AS185CZqipg","miniature":"https://img.youtube.com/vi/AS185CZqipg/hqdefault.jpg"},
-            {"section":"Liste Crâne","ordre":4,"titre":"MO2022 - B2 - 06 Crane Partie inférieure Dents P2","duree_s":294,"duree":"4:54","date_upload":"2022-03-28T15:19:10","url":"https://www.youtube.com/watch?v=wFPg0X1xi0s","video_id":"wFPg0X1xi0s","miniature":"https://img.youtube.com/vi/wFPg0X1xi0s/hqdefault.jpg"},
-            {"section":"Liste Crâne","ordre":5,"titre":"MO2022 - B2 - 07 Ajuster le crane au reste du corps","duree_s":68,"duree":"1:08","date_upload":"2022-03-28T15:19:18","url":"https://www.youtube.com/watch?v=6AViSpMagJE","video_id":"6AViSpMagJE","miniature":"https://img.youtube.com/vi/6AViSpMagJE/hqdefault.jpg"},
-            {"section":"Liste Crâne","ordre":6,"titre":"MO2022 - B2 - 03 Crane Partie inférieure (mandibule) P1","duree_s":339,"duree":"5:39","date_upload":"2022-03-28T16:29:15","url":"https://www.youtube.com/watch?v=xSl_Y7fZkdk","video_id":"xSl_Y7fZkdk","miniature":"https://img.youtube.com/vi/xSl_Y7fZkdk/hqdefault.jpg"},
-            {"section":"Liste Crâne","ordre":7,"titre":"MO2022 - B2 - 05 Crane Partie inférieure Dents P1","duree_s":385,"duree":"6:25","date_upload":"2022-03-28T16:29:59","url":"https://www.youtube.com/watch?v=D25nrYyNC4k","video_id":"D25nrYyNC4k","miniature":"https://img.youtube.com/vi/D25nrYyNC4k/hqdefault.jpg"}
+            {"section":"Liste Crâne","ordre":1,"titre":"MO2022 - B2 - 01 Crane Partie suppérieur P1","duree_s":390,"duree":"6:30","date_upload":"2022-03-27T21:13:43","url":"https://www.youtube.com/watch?v=aLAzKbbahgk","video_id":"aLAzKbbahgk","miniature":"https://img.youtube.com/vi/aLAzKbbahgk/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/aLAzKbbahgk/hqdefault.jpg'""},
+            {"section":"Liste Crâne","ordre":2,"titre":"MO2022 - B2 - 02 Crane Partie suppérieur P2","duree_s":345,"duree":"5:45","date_upload":"2022-03-27T21:14:20","url":"https://www.youtube.com/watch?v=f8d0f-dbGiU","video_id":"f8d0f-dbGiU","miniature":"https://img.youtube.com/vi/f8d0f-dbGiU/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/f8d0f-dbGiU/hqdefault.jpg'""},
+            {"section":"Liste Crâne","ordre":3,"titre":"MO2022 - B2 - 04 Crane Partie inférieure (mandibule) P2","duree_s":145,"duree":"2:25","date_upload":"2022-03-28T15:17:55","url":"https://www.youtube.com/watch?v=AS185CZqipg","video_id":"AS185CZqipg","miniature":"https://img.youtube.com/vi/AS185CZqipg/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/AS185CZqipg/hqdefault.jpg'""},
+            {"section":"Liste Crâne","ordre":4,"titre":"MO2022 - B2 - 06 Crane Partie inférieure Dents P2","duree_s":294,"duree":"4:54","date_upload":"2022-03-28T15:19:10","url":"https://www.youtube.com/watch?v=wFPg0X1xi0s","video_id":"wFPg0X1xi0s","miniature":"https://img.youtube.com/vi/wFPg0X1xi0s/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/wFPg0X1xi0s/hqdefault.jpg'""},
+            {"section":"Liste Crâne","ordre":5,"titre":"MO2022 - B2 - 07 Ajuster le crane au reste du corps","duree_s":68,"duree":"1:08","date_upload":"2022-03-28T15:19:18","url":"https://www.youtube.com/watch?v=6AViSpMagJE","video_id":"6AViSpMagJE","miniature":"https://img.youtube.com/vi/6AViSpMagJE/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/6AViSpMagJE/hqdefault.jpg'""},
+            {"section":"Liste Crâne","ordre":6,"titre":"MO2022 - B2 - 03 Crane Partie inférieure (mandibule) P1","duree_s":339,"duree":"5:39","date_upload":"2022-03-28T16:29:15","url":"https://www.youtube.com/watch?v=xSl_Y7fZkdk","video_id":"xSl_Y7fZkdk","miniature":"https://img.youtube.com/vi/xSl_Y7fZkdk/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/xSl_Y7fZkdk/hqdefault.jpg'""},
+            {"section":"Liste Crâne","ordre":7,"titre":"MO2022 - B2 - 05 Crane Partie inférieure Dents P1","duree_s":385,"duree":"6:25","date_upload":"2022-03-28T16:29:59","url":"https://www.youtube.com/watch?v=D25nrYyNC4k","video_id":"D25nrYyNC4k","miniature":"https://img.youtube.com/vi/D25nrYyNC4k/sddefault.jpg" onerror="this.src='https://img.youtube.com/vi/D25nrYyNC4k/hqdefault.jpg'""}
         ];
 
         const grid = document.getElementById('thumbnailsGrid');
