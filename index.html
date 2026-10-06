@@ -369,6 +369,106 @@
         .sidebar::-webkit-scrollbar-thumb:hover {
             background: #c9bfae;
         }
+
+        .player-section {
+            margin: 30px 0;
+            background: #2c2926;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #3a3532;
+        }
+
+        .player-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 6px;
+            background: #1c1a19;
+        }
+
+        .player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 6px;
+        }
+
+        .player-info {
+            margin-top: 15px;
+        }
+
+        .player-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f0e9df;
+            margin-bottom: 8px;
+        }
+
+        .thumbnails-section {
+            margin-top: 30px;
+        }
+
+        .thumbnails-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #c9bfae;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .thumbnails-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .thumbnail-card {
+            cursor: pointer;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 2px solid #3a3532;
+            transition: all 0.2s ease;
+            background: #2c2926;
+        }
+
+        .thumbnail-card:hover {
+            border-color: #948294;
+            transform: translateY(-2px);
+        }
+
+        .thumbnail-card.active {
+            border-color: #948294;
+            background: #3a3532;
+        }
+
+        .thumbnail-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .thumbnail-card .card-info {
+            padding: 10px;
+        }
+
+        .thumbnail-card .card-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #f0e9df;
+            line-height: 1.3;
+            margin-bottom: 4px;
+        }
+
+        .thumbnail-card .card-duration {
+            font-size: 11px;
+            color: #9c8f88;
+        }
     </style>
 </head>
 <body>
@@ -385,6 +485,7 @@
             <button class="tab-btn active" data-tab="accueil">Accueil</button>
             <button class="tab-btn" data-tab="squelette">Le Squelette</button>
             <button class="tab-btn" data-tab="crane">Le Crâne</button>
+            <button class="tab-btn" data-tab="globe-oculaire">Le globe oculaire</button>
             <button class="tab-btn" data-tab="muscles">Les Muscles</button>
             <button class="tab-btn" data-tab="peau">La peau et finaliser</button>
             <button class="tab-btn" data-tab="topologie">La topologie</button>
@@ -420,6 +521,12 @@
                         <h3>Le Crâne</h3>
                         <p>Analyse détaillée du crâne, de la mandibule aux ajustements proportionnels.</p>
                         <span class="badge">7 vidéos</span>
+                    </a>
+
+                    <a href="#" onclick="switchTab('globe-oculaire'); return false;" class="section-card">
+                        <h3>Le globe oculaire</h3>
+                        <p>Modélisation complète de l'œil, ajustement des références, déploiement des UV.</p>
+                        <span class="badge">4 vidéos</span>
                     </a>
 
                     <a href="#" onclick="switchTab('muscles'); return false;" class="section-card">
@@ -471,6 +578,25 @@
                 </div>
                 <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Liste_Crane.html</p>
                 <a href="Liste_Crane.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+            </div>
+
+            <div id="globe-oculaire" class="content-section">
+                <div class="section-header">
+                    <h2>Le globe oculaire</h2>
+                    <p>Modélisation complète de l'œil, ajustement des références, déploiement des UV.</p>
+                </div>
+                <div class="player-section">
+                    <div class="player-wrapper">
+                        <iframe id="player-globe" width="560" height="315" src="https://www.youtube.com/embed/d57rwM42mW4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="player-info">
+                        <div class="player-title" id="title-globe">Une Sphère pour mon globe occulaire</div>
+                    </div>
+                </div>
+                <div class="thumbnails-section">
+                    <div class="thumbnails-title">Vidéos disponibles</div>
+                    <div class="thumbnails-grid" id="grid-globe"></div>
+                </div>
             </div>
 
             <div id="muscles" class="content-section">
@@ -545,11 +671,60 @@
             window.scrollTo(0, 0);
         }
 
+        // Données des vidéos du globe oculaire
+        const videosGlobe = [
+            {"ordre":1,"titre":"Une Sphère pour mon globe occulaire","duree":"1:31","video_id":"d57rwM42mW4"},
+            {"ordre":2,"titre":"Ajustement des référence dans la scène","duree":"1:24","video_id":"olBdOjobmqw"},
+            {"ordre":3,"titre":"Modélisation du globe occulaires","duree":"2:30","video_id":"a7ImtkFkpfg"},
+            {"ordre":4,"titre":"Déployer les UV","duree":"4:35","video_id":"IZ7m6Gq5NbQ"}
+        ];
+
+        // Initialiser la grille de vidéos du globe oculaire
+        function initializeGlobeVideos() {
+            const grid = document.getElementById('grid-globe');
+            const player = document.getElementById('player-globe');
+            const title = document.getElementById('title-globe');
+
+            videosGlobe.forEach((video, index) => {
+                const card = document.createElement('div');
+                card.className = 'thumbnail-card';
+                if (index === 0) card.classList.add('active');
+                
+                card.innerHTML = `
+                    <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" 
+                         onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
+                    <div class="card-info">
+                        <div class="card-title">${video.titre}</div>
+                        <div class="card-duration">${video.duree}</div>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => {
+                    // Activer la carte
+                    document.querySelectorAll('#grid-globe .thumbnail-card').forEach(c => {
+                        c.classList.remove('active');
+                    });
+                    card.classList.add('active');
+                    
+                    // Charger la vidéo
+                    player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                    title.textContent = video.titre;
+                });
+                
+                grid.appendChild(card);
+            });
+        }
+
         // Système d'onglets
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 switchTab(btn.getAttribute('data-tab'));
             });
+        });
+
+        // Initialiser les vidéos au chargement
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeGlobeVideos();
         });
     </script>
 </body>

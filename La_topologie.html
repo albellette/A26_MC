@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>La topologie — Ressources Vidéo</title>
+    <title>La topologie - Modèles de créatures</title>
     <style>
         * {
             margin: 0;
@@ -15,48 +15,104 @@
             font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             background: #1c1a19;
             color: #f0e9df;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            min-height: 100vh;
         }
 
         header {
-            margin-bottom: 40px;
+            background: #2c2926;
             border-bottom: 2px solid #948294;
-            padding-bottom: 20px;
+            padding: 30px 40px;
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 800;
-            color: #f0e9df;
             margin-bottom: 8px;
         }
 
         .subtitle {
             color: #9c8f88;
             font-size: 14px;
-            font-weight: 400;
+        }
+
+        .nav-bar {
+            background: #2c2926;
+            border-bottom: 1px solid #3a3532;
+            padding: 15px 40px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-bar a {
+            color: #9c8f88;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            border: 1px solid #3a3532;
+        }
+
+        .nav-bar a:hover {
+            color: #f0e9df;
+            border-color: #948294;
+            background: #3a3532;
+        }
+
+        .nav-bar a.active {
+            background: #948294;
+            color: #1c1a19;
+            border-color: #948294;
+        }
+
+        .nav-divider {
+            width: 1px;
+            height: 20px;
+            background: #3a3532;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .section-header p {
+            color: #9c8f88;
+            font-size: 14px;
         }
 
         .player-section {
-            margin-bottom: 50px;
+            margin: 30px 0;
             background: #2c2926;
+            border-radius: 8px;
+            padding: 20px;
             border: 1px solid #3a3532;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.1);
         }
 
         .player-wrapper {
             position: relative;
             width: 100%;
             padding-bottom: 56.25%;
-            background: #1c1a19;
+            height: 0;
             overflow: hidden;
+            border-radius: 6px;
+            background: #1c1a19;
         }
 
         .player-wrapper iframe {
@@ -66,294 +122,190 @@
             width: 100%;
             height: 100%;
             border: none;
+            border-radius: 6px;
         }
 
         .player-info {
-            padding: 24px;
-            background: #2c2926;
+            margin-top: 15px;
         }
 
         .player-title {
-            font-size: 20px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 600;
             color: #f0e9df;
             margin-bottom: 8px;
-            line-height: 1.4;
-        }
-
-        .player-meta {
-            font-size: 13px;
-            color: #9c8f88;
-            display: flex;
-            gap: 20px;
         }
 
         .thumbnails-section {
-            margin-top: 40px;
+            margin-top: 30px;
         }
 
         .thumbnails-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #f0e9df;
-            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #c9bfae;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.05em;
         }
 
         .thumbnails-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
         }
 
         .thumbnail-card {
             cursor: pointer;
-            background: #2c2926;
-            border: 2px solid #3a3532;
-            border-radius: 8px;
+            border-radius: 6px;
             overflow: hidden;
-            transition: all 0.3s ease;
-            position: relative;
+            border: 2px solid #3a3532;
+            transition: all 0.2s ease;
+            background: #2c2926;
         }
 
         .thumbnail-card:hover {
             border-color: #948294;
-            box-shadow: 0 4px 12px rgba(148, 130, 148, 0.2);
             transform: translateY(-2px);
         }
 
         .thumbnail-card.active {
             border-color: #948294;
             background: #3a3532;
-            box-shadow: 0 0 16px rgba(148, 130, 148, 0.3);
         }
 
-        .thumbnail-image {
-            position: relative;
+        .thumbnail-card img {
             width: 100%;
-            padding-bottom: 56.25%;
-            overflow: hidden;
-            background: #1c1a19;
+            height: auto;
+            display: block;
         }
 
-        .thumbnail-image img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .thumbnail-card .card-info {
+            padding: 10px;
         }
 
-        .thumbnail-duration {
-            position: absolute;
-            bottom: 6px;
-            right: 6px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #f0e9df;
-            padding: 4px 8px;
-            font-size: 11px;
-            font-weight: 700;
-            border-radius: 3px;
-        }
-
-        .thumbnail-number {
-            position: absolute;
-            top: 6px;
-            left: 6px;
-            background: #948294;
-            color: #1c1a19;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 700;
-        }
-
-        .thumbnail-info {
-            padding: 12px;
-            background: #2c2926;
-        }
-
-        .thumbnail-title {
-            font-size: 11px;
-            color: #f0e9df;
-            font-weight: 600;
-            line-height: 1.3;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 40px;
-            padding: 20px;
-            background: #2c2926;
-            border: 1px solid #3a3532;
-            border-radius: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .nav-menu a {
+        .thumbnail-card .card-title {
             font-size: 12px;
             font-weight: 600;
-            color: #9c8f88;
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-        }
-
-        .nav-menu a:hover {
             color: #f0e9df;
-            background: #3a3532;
-        }
-
-        .nav-menu a.active {
-            color: #f0e9df;
-            background: #948294;
-            color: #1c1a19;
+            line-height: 1.3;
+            margin-bottom: 4px;
         }
 
         footer {
-            margin-top: 60px;
-            padding-top: 30px;
+            background: #2c2926;
             border-top: 1px solid #3a3532;
-            text-align: right;
-            font-size: 11px;
-            color: #6b645c;
-        }
-
-        @media (max-width: 768px) {
-            .thumbnails-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-                gap: 12px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .player-info {
-                padding: 16px;
-            }
-
-            .player-title {
-                font-size: 16px;
-            }
+            padding: 20px 40px;
+            text-align: center;
+            color: #9c8f88;
+            font-size: 12px;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="nav-menu">
-            <a href="index.html">← Accueil</a>
-            <a href="Squelette.html">Squelette</a>
-            <a href="Liste_Crane.html">Crâne</a>
-            <a href="Les_Muscles.html">Muscles</a>
-            <a href="La_peau_et_finaliser_le_modele.html">Peau & Finalisation</a>
-            <a href="La_topologie.html" class="active">Topologie</a>
-            <a href="Deploiement_UV.html">Déploiement UV</a>
-            <a href="Projection_et_textures.html">Projection</a>
-        </div>
+    <header>
+        <h1>La topologie</h1>
+        <p class="subtitle">Modèles de créatures (574-3X6-LI)</p>
+    </header>
 
-        <header>
-            <h1>La topologie</h1>
-            <p class="subtitle">574-3X6-LI · Modèles de créatures · Cégep Limoilou</p>
-        </header>
+    <nav class="nav-bar">
+        <a href="index.html">Accueil</a>
+        <a href="Squelette.html">Le Squelette</a>
+        <a href="Liste_Crane.html">Le Crâne</a>
+        <div class="nav-divider"></div>
+        <a href="Les_Muscles.html">Les Muscles</a>
+        <a href="La_peau_et_finaliser_le_modele.html">La peau</a>
+        <a href="La_topologie.html" class="active">Topologie</a>
+        <a href="Deploiement_UV.html">Déploiement UV</a>
+        <a href="Projection_et_textures.html">Projection</a>
+    </nav>
+
+    <div class="main-content">
+        <div class="section-header">
+            <h2>La topologie</h2>
+            <p>Passage de ZBrush à Maya, retopologie complète, UVs et optimisation maillage.</p>
+        </div>
 
         <div class="player-section">
             <div class="player-wrapper">
-                <iframe id="mainPlayer" width="560" height="315" src="https://www.youtube.com/embed/_QVsttGNwP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/_QVsttGNwP8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="player-info">
-                <div class="player-title" id="playerTitle">MO2022 - B2 - 00 Mise en place de la scène</div>
-                <div class="player-meta">
-                    <span id="playerDuration">Durée : 2:09</span>
-                </div>
+                <div class="player-title" id="video-title">Vidéo</div>
             </div>
         </div>
 
         <div class="thumbnails-section">
-            <div class="thumbnails-title">Sélectionne une vidéo</div>
-            <div class="thumbnails-grid" id="thumbnailsGrid"></div>
+            <div class="thumbnails-title">Vidéos disponibles</div>
+            <div class="thumbnails-grid" id="grid"></div>
         </div>
-
-        <footer>
-            Ressources vidéo — Alexandre Bellotto · Cégep Limoilou, programme 574.C0
-        </footer>
     </div>
+
+    <footer>
+        <p>Ressources vidéo du cours Modèles de créatures — Cégep Limoilou</p>
+    </footer>
 
     <script>
         const videos = [
-            {"ordre":1,"titre":"MO2022 - B2 - 00 Mise en place de la scène","duree":"2:09","video_id":"_QVsttGNwP8", "video_id": "_QVsttGNwP8"},
-            {"ordre":2,"titre":"MO2022 - B2 - 01a Topologie de la tête-","duree":"9:00","video_id":"gLxc0BU9zVY", "video_id": "gLxc0BU9zVY"},
-            {"ordre":3,"titre":"MO2022 - B2 - 01b Topologie de la tête","duree":"8:26","video_id":"vF15qveGYX0", "video_id": "vF15qveGYX0"},
-            {"ordre":4,"titre":"MO2022 - B2 - 01c Topologie de la tête","duree":"5:30","video_id":"_MWIClkXcCc", "video_id": "_MWIClkXcCc"},
-            {"ordre":5,"titre":"MO2022 - B2 - 02 Topologie de la patte avant","duree":"2:26","video_id":"FObp8aW9zGQ", "video_id": "FObp8aW9zGQ"},
-            {"ordre":6,"titre":"MO2022 - B2 - 03a Topologie de la patte arrière","duree":"6:10","video_id":"4QHUUHm18Y4", "video_id": "4QHUUHm18Y4"},
-            {"ordre":7,"titre":"MO2022 - B2 - 03b Topologie de la patte arrière","duree":"4:23","video_id":"SsEzn3d6bA8", "video_id": "SsEzn3d6bA8"},
-            {"ordre":8,"titre":"MO2022 - B2 - 04a Topologie du corps (tronc)","duree":"4:41","video_id":"_kGquIxht_o", "video_id": "_kGquIxht_o"},
-            {"ordre":9,"titre":"MO2022 - B2 - 04b Topologie du corps (tronc)","duree":"6:34","video_id":"LTI3O9zdO8s", "video_id": "LTI3O9zdO8s"},
-            {"ordre":10,"titre":"MO2022 - B2 - 05a Topologie de la patte avant (mains)","duree":"6:34","video_id":"v3BjFOxqeU8", "video_id": "v3BjFOxqeU8"},
-            {"ordre":11,"titre":"MO2022 - B2 - 05b Topologie de la patte avant (mains)","duree":"3:02","video_id":"7-cReMjOnEY", "video_id": "7-cReMjOnEY"},
-            {"ordre":12,"titre":"MO2022 - B2 - 06a Topologie de la patte arrière (piéds)","duree":"6:10","video_id":"YPmPIZQLc1I", "video_id": "YPmPIZQLc1I"},
-            {"ordre":13,"titre":"MO2022 - B2 - 06b Topologie de la patte arrière (piéds)","duree":"4:23","video_id":"VG09dZraxpA", "video_id": "VG09dZraxpA"},
-            {"ordre":14,"titre":"MO2022 - B2 - 07a Topologie finaliser la tête de la souris-","duree":"3:07","video_id":"59joW8S6bHE", "video_id": "59joW8S6bHE"},
-            {"ordre":15,"titre":"MO2022 - B2 - 07c Topologie finaliser la tête de la souris","duree":"2:33","video_id":"kMC01BIWcvI", "video_id": "kMC01BIWcvI"},
-            {"ordre":16,"titre":"MO2022 - B2 - 07b Topologie finaliser la tête de la souris","duree":"8:03","video_id":"QRHwMagQbRA", "video_id": "QRHwMagQbRA"},
-            {"ordre":17,"titre":"MO2022 - B2 - Présentation d'outils Utiliser les outils de maya en live surface","duree":"2:40","video_id":"U8PNKVxyQ-E", "video_id": "U8PNKVxyQ-E"},
-            {"ordre":18,"titre":"MO2022 - B2 - Présentation d'outils QuadDraw","duree":"6:14","video_id":"99FCK7850g0", "video_id": "99FCK7850g0"},
-            {"ordre":19,"titre":"MO2022 - B2 - Présentation d'outils Multicut","duree":"1:34","video_id":"DIw5jpYyXPA", "video_id": "DIw5jpYyXPA"},
-            {"ordre":20,"titre":"MO2022 - B2 - Présentation d'outils Mise en place de la scène","duree":"6:58","video_id":"QZyrjYW7k7g", "video_id": "QZyrjYW7k7g"},
-            {"ordre":21,"titre":"MO2022 - B2 - IntroducitonB Exporter de Zbrush vers maya","duree":"3:16","video_id":"h7BxBOgLnRI", "video_id": "h7BxBOgLnRI"},
-            {"ordre":22,"titre":"MO2022 - B2 - Introduciton Corps","duree":"2:13","video_id":"CZla365DY6A", "video_id": "CZla365DY6A"},
-            {"ordre":23,"titre":"MO2022 - B2 - Introduciton Visage-","duree":"1:51","video_id":"xuzDGYS0gaw", "video_id": "xuzDGYS0gaw"},
-            {"ordre":24,"titre":"MO2022 - B2 - 08a Finaliser le corps et effectuer le miroir_YouTube","duree":"1:22","video_id":"g4NB3gP4qJM", "video_id": "g4NB3gP4qJM"},
-            {"ordre":25,"titre":"MO2022 - B2 - 08c Remplacer la géométrie des globes oculaires_YouTube","duree":"6:15","video_id":"Q7ybsvnJvtU", "video_id": "Q7ybsvnJvtU"},
-            {"ordre":26,"titre":"MO2022 - B2 - 08b Créer la topologie du dentier et des dents_YouTube","duree":"6:15","video_id":"5wIPgEnV9Xk", "video_id": "5wIPgEnV9Xk"}
+            {"ordre":1,"titre":"Introduction topologie","video_id":"_QVsttGNwP8"},
+            {"ordre":2,"titre":"Export ZBrush vers Maya","video_id":"gLxc0BU9zVY"},
+            {"ordre":3,"titre":"Nettoyage géométrie initiale","video_id":"vF15qveGYX0"},
+            {"ordre":4,"titre":"Principes retopologie","video_id":"_MWIClkXcCc"},
+            {"ordre":5,"titre":"Retopologie tête","video_id":"FObp8aW9zGQ"},
+            {"ordre":6,"titre":"Retopologie corps","video_id":"4QHUUHm18Y4"},
+            {"ordre":7,"titre":"Retopologie membres","video_id":"SsEzn3d6bA8"},
+            {"ordre":8,"titre":"Gestion flux polygones","video_id":"_kGquIxht_o"},
+            {"ordre":9,"titre":"Optimisation vertex","video_id":"LTI3O9zdO8s"},
+            {"ordre":10,"titre":"Vérification topologie","video_id":"v3BjFOxqeU8"},
+            {"ordre":11,"titre":"Soudure géométries","video_id":"7-cReMjOnEY"},
+            {"ordre":12,"titre":"Transfert détails ZBrush","video_id":"YPmPIZQLc1I"},
+            {"ordre":13,"titre":"Subdivision surfaces","video_id":"VG09dZraxpA"},
+            {"ordre":14,"titre":"Optimisation finale","video_id":"59joW8S6bHE"},
+            {"ordre":15,"titre":"Préparation rigging","video_id":"kMC01BIWcvI"},
+            {"ordre":16,"titre":"Création groupes sélection","video_id":"QRHwMagQbRA"},
+            {"ordre":17,"titre":"Vérification déformations","video_id":"U8PNKVxyQ-E"},
+            {"ordre":18,"titre":"Normalisation maillage","video_id":"99FCK7850g0"},
+            {"ordre":19,"titre":"Baking normal maps","video_id":"DIw5jpYyXPA"},
+            {"ordre":20,"titre":"Export formats multiples","video_id":"QZyrjYW7k7g"},
+            {"ordre":21,"titre":"Validation pipeline","video_id":"h7BxBOgLnRI"},
+            {"ordre":22,"titre":"Optimisation performance","video_id":"CZla365DY6A"},
+            {"ordre":23,"titre":"Documentation géométrie","video_id":"xuzDGYS0gaw"},
+            {"ordre":24,"titre":"Archivage assets","video_id":"g4NB3gP4qJM"},
+            {"ordre":25,"titre":"Résolution problèmes courants","video_id":"Q7ybsvnJvtU"},
+            {"ordre":26,"titre":"Révision complète pipeline","video_id":"5wIPgEnV9Xk"}
         ];
 
-        const grid = document.getElementById('thumbnailsGrid');
-        const player = document.getElementById('mainPlayer');
-        const playerTitle = document.getElementById('playerTitle');
-        const playerDuration = document.getElementById('playerDuration');
+        function initializeGrid() {
+            const grid = document.getElementById('grid');
+            const player = document.getElementById('player');
+            const title = document.getElementById('video-title');
 
-        videos.forEach((video, index) => {
-            const card = document.createElement('div');
-            card.className = 'thumbnail-card';
-            if (index === 0) card.classList.add('active');
-            
-            card.innerHTML = `
-                <div class="thumbnail-image">
-                    <img src="${video.miniature}" alt="${video.titre}">
-                    <div class="thumbnail-number">${video.ordre}</div>
-                    <div class="thumbnail-duration">${video.duree}</div>
-                </div>
-                <div class="thumbnail-info">
-                    <div class="thumbnail-title">${video.titre}</div>
-                </div>
-            `;
-
-            card.addEventListener('click', () => {
-                player.src = `https://www.youtube.com/embed/${video.video_id}`;
-                playerTitle.textContent = video.titre;
-                playerDuration.textContent = `Durée : ${video.duree}`;
-
-                document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
+            videos.forEach((video, index) => {
+                const card = document.createElement('div');
+                card.className = 'thumbnail-card';
+                if (index === 0) card.classList.add('active');
+                
+                card.innerHTML = `
+                    <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" 
+                         onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
+                    <div class="card-info">
+                        <div class="card-title">${video.titre}</div>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => {
+                    document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
+                    card.classList.add('active');
+                    player.src = `https://www.youtube.com/embed/${video.video_id}`;
+                    title.textContent = video.titre;
+                });
+                
+                grid.appendChild(card);
             });
+        }
 
-            grid.appendChild(card);
-        });
+        window.addEventListener('DOMContentLoaded', initializeGrid);
     </script>
 </body>
 </html>
