@@ -5,11 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Déploiement UV - Modèles de créatures</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
@@ -18,22 +14,13 @@
             min-height: 100vh;
         }
 
-        header {
+        header.page-header {
             background: #2c2926;
             border-bottom: 2px solid #948294;
             padding: 30px 40px;
         }
-
-        h1 {
-            font-size: 28px;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: #9c8f88;
-            font-size: 14px;
-        }
+        header.page-header h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+        header.page-header .subtitle { color: #9c8f88; font-size: 14px; }
 
         .nav-bar {
             background: #2c2926;
@@ -44,7 +31,6 @@
             flex-wrap: wrap;
             align-items: center;
         }
-
         .nav-bar a {
             color: #9c8f88;
             text-decoration: none;
@@ -55,46 +41,35 @@
             transition: all 0.2s;
             border: 1px solid #3a3532;
         }
+        .nav-bar a:hover { color: #f0e9df; border-color: #948294; background: #3a3532; }
+        .nav-bar a.active { background: #948294; color: #1c1a19; border-color: #948294; }
+        .nav-divider { width: 1px; height: 20px; background: #3a3532; }
 
-        .nav-bar a:hover {
-            color: #f0e9df;
-            border-color: #948294;
-            background: #3a3532;
-        }
-
-        .nav-bar a.active {
-            background: #948294;
-            color: #1c1a19;
-            border-color: #948294;
-        }
-
-        .nav-divider {
-            width: 1px;
-            height: 20px;
-            background: #3a3532;
-        }
-
-        .main-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .main-content { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
 
         .section-header {
             margin-bottom: 40px;
             border-bottom: 2px solid #948294;
             padding-bottom: 20px;
         }
+        .section-header h2 { font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+        .section-header p { color: #9c8f88; font-size: 14px; }
 
-        .section-header h2 {
-            font-size: 24px;
-            font-weight: 800;
-            margin-bottom: 8px;
+        footer.page-footer {
+            background: #2c2926;
+            border-top: 1px solid #3a3532;
+            padding: 20px 40px;
+            text-align: center;
+            color: #9c8f88;
+            font-size: 12px;
+            margin-top: 60px;
         }
 
-        .section-header p {
-            color: #9c8f88;
-            font-size: 14px;
+        @media (max-width: 600px) {
+            header.page-header { padding: 24px 16px; }
+            .nav-bar { padding: 12px 16px; gap: 10px; }
+            .main-content { padding: 28px 16px; }
+            footer.page-footer { padding: 20px 16px; }
         }
 
         .player-section {
@@ -104,7 +79,6 @@
             padding: 20px;
             border: 1px solid #3a3532;
         }
-
         .player-wrapper {
             position: relative;
             width: 100%;
@@ -114,47 +88,25 @@
             border-radius: 6px;
             background: #1c1a19;
         }
-
         .player-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 6px;
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none; border-radius: 6px;
         }
+        .player-info { margin-top: 15px; }
+        .player-title { font-size: 16px; font-weight: 600; color: #f0e9df; margin-bottom: 6px; }
+        .player-meta { font-size: 13px; color: #9c8f88; }
 
-        .player-info {
-            margin-top: 15px;
-        }
-
-        .player-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #f0e9df;
-            margin-bottom: 8px;
-        }
-
-        .thumbnails-section {
-            margin-top: 30px;
-        }
-
+        .thumbnails-section { margin-top: 30px; }
         .thumbnails-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #c9bfae;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-size: 14px; font-weight: 600; color: #c9bfae;
+            margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.05em;
         }
-
         .thumbnails-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
             gap: 12px;
         }
-
         .thumbnail-card {
             cursor: pointer;
             border-radius: 6px;
@@ -163,48 +115,24 @@
             transition: all 0.2s ease;
             background: #2c2926;
         }
-
-        .thumbnail-card:hover {
-            border-color: #948294;
-            transform: translateY(-2px);
+        .thumbnail-card:hover { border-color: #948294; transform: translateY(-2px); }
+        .thumbnail-card.active { border-color: #948294; background: #3a3532; }
+        .thumbnail-image { position: relative; aspect-ratio: 16 / 9; background: #1c1a19; }
+        .thumbnail-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .thumbnail-number {
+            position: absolute; top: 6px; left: 6px;
+            background: #948294; color: #1c1a19;
+            font-size: 11px; font-weight: 700;
+            min-width: 22px; height: 22px; padding: 0 6px;
+            border-radius: 11px;
+            display: flex; align-items: center; justify-content: center;
         }
-
-        .thumbnail-card.active {
-            border-color: #948294;
-            background: #3a3532;
-        }
-
-        .thumbnail-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .thumbnail-card .card-info {
-            padding: 10px;
-        }
-
-        .thumbnail-card .card-title {
-            font-size: 12px;
-            font-weight: 600;
-            color: #f0e9df;
-            line-height: 1.3;
-            margin-bottom: 4px;
-        }
-
-        footer {
-            background: #2c2926;
-            border-top: 1px solid #3a3532;
-            padding: 20px 40px;
-            text-align: center;
-            color: #9c8f88;
-            font-size: 12px;
-            margin-top: 60px;
-        }
+        .card-info { padding: 10px; }
+        .card-title { font-size: 12px; font-weight: 600; color: #f0e9df; line-height: 1.3; }
     </style>
 </head>
 <body>
-    <header>
+    <header class="page-header">
         <h1>Déploiement UV</h1>
         <p class="subtitle">Modèles de créatures (574-3X6-LI)</p>
     </header>
@@ -229,10 +157,11 @@
 
         <div class="player-section">
             <div class="player-wrapper">
-                <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/xI8L52juYTk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/xI8L52juYTk" title="Lecteur vidéo YouTube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             <div class="player-info">
-                <div class="player-title" id="video-title">Vidéo</div>
+                <div class="player-title" id="video-title">MO2022 - B2 - 00 Section des UV du corps</div>
+                <div class="player-meta" id="video-meta">Vidéo 1 / 9</div>
             </div>
         </div>
 
@@ -242,48 +171,63 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="page-footer">
         <p>Ressources vidéo du cours Modèles de créatures — Cégep Limoilou</p>
     </footer>
 
     <script>
         const videos = [
-            {"ordre":1,"titre":"MO2022 - B2 - 00 Section des UV du corps","video_id":"xI8L52juYTk"},
-            {"ordre":2,"titre":"MO2022 - B2 - 01 Section des UV des pattes","video_id":"Vb2jvd4qKII"},
-            {"ordre":3,"titre":"MO2022 - B2 - 02 Section des UV de la tête et packing","video_id":"APAZBpYcB1c"},
-            {"ordre":4,"titre":"MO2022 - B2 - DEnts2","video_id":"tUpKgDFR5Wg"},
-            {"ordre":5,"titre":"MO2022 - B2 - Langue","video_id":"JQtV3QzHcvU"},
-            {"ordre":6,"titre":"MO2022 - B2 - Gensive","video_id":"Tprd1A16BPo"},
-            {"ordre":7,"titre":"MO2022 - B2 - Griffes","video_id":"FnejJ0hEowU"},
-            {"ordre":8,"titre":"MO2022 - B2 - Globes oculaires","video_id":"3a30Xi5cBws"},
-            {"ordre":9,"titre":"MO2022 - B2 - DEnts1","video_id":"3I01jB0oP20"}
+            {"ordre": 1, "titre": "MO2022 - B2 - 00 Section des UV du corps", "video_id": "xI8L52juYTk"},
+            {"ordre": 2, "titre": "MO2022 - B2 - 01 Section des UV des pattes", "video_id": "Vb2jvd4qKII"},
+            {"ordre": 3, "titre": "MO2022 - B2 - 02 Section des UV de la tête et packing", "video_id": "APAZBpYcB1c"},
+            {"ordre": 4, "titre": "MO2022 - B2 - DEnts2", "video_id": "tUpKgDFR5Wg"},
+            {"ordre": 5, "titre": "MO2022 - B2 - Langue", "video_id": "JQtV3QzHcvU"},
+            {"ordre": 6, "titre": "MO2022 - B2 - Gensive", "video_id": "Tprd1A16BPo"},
+            {"ordre": 7, "titre": "MO2022 - B2 - Griffes", "video_id": "FnejJ0hEowU"},
+            {"ordre": 8, "titre": "MO2022 - B2 - Globes oculaires", "video_id": "3a30Xi5cBws"},
+            {"ordre": 9, "titre": "MO2022 - B2 - DEnts1", "video_id": "3I01jB0oP20"}
         ];
 
         function initializeGrid() {
             const grid = document.getElementById('grid');
             const player = document.getElementById('player');
             const title = document.getElementById('video-title');
+            const meta = document.getElementById('video-meta');
 
             videos.forEach((video, index) => {
                 const card = document.createElement('div');
                 card.className = 'thumbnail-card';
                 if (index === 0) card.classList.add('active');
-                
-                card.innerHTML = `
-                    <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" 
-                         onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
-                    <div class="card-info">
-                        <div class="card-title">${video.titre}</div>
-                    </div>
-                `;
-                
+
+                const img = document.createElement('img');
+                img.loading = 'lazy';
+                img.alt = video.titre;
+                img.src = `https://img.youtube.com/vi/${video.video_id}/sddefault.jpg`;
+                img.onerror = () => { img.onerror = null; img.src = `https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg`; };
+
+                const image = document.createElement('div');
+                image.className = 'thumbnail-image';
+                const num = document.createElement('div');
+                num.className = 'thumbnail-number';
+                num.textContent = video.ordre;
+                image.append(img, num);
+
+                const info = document.createElement('div');
+                info.className = 'card-info';
+                const t = document.createElement('div');
+                t.className = 'card-title';
+                t.textContent = video.titre;
+                info.appendChild(t);
+
+                card.append(image, info);
                 card.addEventListener('click', () => {
                     document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
                     card.classList.add('active');
                     player.src = `https://www.youtube.com/embed/${video.video_id}`;
                     title.textContent = video.titre;
+                    meta.textContent = `Vidéo ${video.ordre} / ${videos.length}`;
                 });
-                
+
                 grid.appendChild(card);
             });
         }
