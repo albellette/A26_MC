@@ -340,7 +340,7 @@
             <div class="nav-section-title">Ressources vidéo</div>
             <a href="Squelette.html" class="nav-button">Le Squelette</a>
             <a href="Liste_Crane.html" class="nav-button">Le Crâne</a>
-            <button class="nav-button" data-section="globe-oculaire">Le globe oculaire</button>
+            <a href="Globe_oculaire.html" class="nav-button">Le globe oculaire</a>
             <a href="Les_Muscles.html" class="nav-button">Les Muscles</a>
             <a href="La_peau_et_finaliser_le_modele.html" class="nav-button">La peau et finaliser</a>
             <a href="La_topologie.html" class="nav-button">La topologie</a>
@@ -380,7 +380,7 @@
                     <span class="badge">7 vidéos</span>
                 </a>
 
-                <a href="#" onclick="switchSection('globe-oculaire'); return false;" class="section-card">
+                <a href="Globe_oculaire.html" class="section-card">
                     <h3>Le globe oculaire</h3>
                     <p>Modélisation complète de l'œil, ajustement des références, texturisation.</p>
                     <span class="badge">11 vidéos</span>
@@ -422,77 +422,9 @@
             </footer>
         </div>
 
-        <div id="globe-oculaire" class="content-section">
-            <div class="section-header">
-                <h2>Le globe oculaire</h2>
-                <p>Modélisation complète de l'œil, ajustement des références, déploiement des UV, texturisation.</p>
-            </div>
-
-            <div class="player-section">
-                <div class="player-wrapper">
-                    <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/d57rwM42mW4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                <div class="player-info">
-                    <div class="player-title" id="video-title">Une Sphère pour mon globe occulaire</div>
-                </div>
-            </div>
-
-            <div class="thumbnails-section">
-                <div class="thumbnails-title">Vidéos disponibles</div>
-                <div class="thumbnails-grid" id="grid"></div>
-            </div>
-
-            <footer>
-                <p>Ressources vidéo du cours Modèles de créatures — Cégep Limoilou</p>
-            </footer>
-        </div>
     </main>
 
     <script>
-        const videosGlobe = [
-            {"ordre":1,"titre":"Une Sphère pour mon globe occulaire","duree":"1:31","video_id":"d57rwM42mW4"},
-            {"ordre":2,"titre":"Ajustement des référence dans la scène","duree":"1:24","video_id":"olBdOjobmqw"},
-            {"ordre":3,"titre":"Modélisation du globe occulaires","duree":"2:30","video_id":"a7ImtkFkpfg"},
-            {"ordre":4,"titre":"Déployer les UV","duree":"4:35","video_id":"IZ7m6Gq5NbQ"},
-            {"ordre":5,"titre":"1 La base","duree":"1:52","video_id":"O3QDkGQL7uc"},
-            {"ordre":6,"titre":"2 Couche de Veines1","duree":"3:55","video_id":"f-VkbTVbvjk"},
-            {"ordre":7,"titre":"3 Faire 3 niveau de couches de veines","duree":"2:11","video_id":"xYgwFwNE2lg"},
-            {"ordre":8,"titre":"4 Couche de Remplissage","duree":"6:09","video_id":"ZIlzk_84Ecw"},
-            {"ordre":9,"titre":"5 Ligne masque mov","duree":"3:48","video_id":"6UoXC5tfg5w"},
-            {"ordre":10,"titre":"6 Ajouter le height","duree":"1:37","video_id":"3TatyOMwm2c"},
-            {"ordre":11,"titre":"7 La cornée","duree":"1:50","video_id":"YaK9qRS3dcc"}
-        ];
-
-        function initializeGrid() {
-            const grid = document.getElementById('grid');
-            const player = document.getElementById('player');
-            const title = document.getElementById('video-title');
-
-            videosGlobe.forEach((video, index) => {
-                const card = document.createElement('div');
-                card.className = 'thumbnail-card';
-                if (index === 0) card.classList.add('active');
-                
-                card.innerHTML = `
-                    <img src="https://img.youtube.com/vi/${video.video_id}/sddefault.jpg" 
-                         onerror="this.src='https://img.youtube.com/vi/${video.video_id}/hqdefault.jpg'">
-                    <div class="card-info">
-                        <div class="card-title">${video.titre}</div>
-                        <div class="card-duration">${video.duree}</div>
-                    </div>
-                `;
-                
-                card.addEventListener('click', () => {
-                    document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
-                    card.classList.add('active');
-                    player.src = `https://www.youtube.com/embed/${video.video_id}`;
-                    title.textContent = video.titre;
-                });
-                
-                grid.appendChild(card);
-            });
-        }
-
         function switchSection(sectionId) {
             document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-button[data-section]').forEach(b => b.classList.remove('active'));
@@ -507,7 +439,6 @@
             });
         });
 
-        window.addEventListener('DOMContentLoaded', initializeGrid);
     </script>
 </body>
 </html>
