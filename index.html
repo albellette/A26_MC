@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modèles de créatures — Ressources Vidéo</title>
+    <title>Modèles de créatures - 574-3X6-LI</title>
     <style>
         * {
             margin: 0;
@@ -22,141 +22,106 @@
         .sidebar {
             width: 280px;
             background: #2c2926;
-            border-right: 1px solid #3a3532;
+            border-right: 2px solid #948294;
             padding: 40px 20px;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
-            left: 0;
-            top: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-header {
+            border-bottom: 2px solid #948294;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-header h1 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .sidebar-header p {
+            font-size: 11px;
+            color: #9c8f88;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #c9bfae;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 15px 0 8px 0;
+            border-top: 1px solid #3a3532;
+        }
+
+        .nav-section:first-child .nav-section-title {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .nav-button {
+            color: #f0e9df;
+            background: #3a3532;
+            border: none;
+            padding: 14px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+            text-align: left;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .nav-button:hover {
+            background: #4a4339;
+            color: #f0e9df;
+        }
+
+        .nav-button.active {
+            background: #948294;
+            color: #1c1a19;
+            font-weight: 700;
+        }
+
+        main {
+            margin-left: 280px;
+            flex: 1;
+            padding: 40px;
         }
 
         header {
-            margin-bottom: 50px;
+            background: #2c2926;
             border-bottom: 2px solid #948294;
-            padding-bottom: 20px;
+            padding: 30px 40px;
+            margin: -40px -40px 40px -40px;
+            padding-left: 320px;
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 28px;
             font-weight: 800;
-            color: #f0e9df;
             margin-bottom: 8px;
-            line-height: 1.2;
         }
 
         .subtitle {
             color: #9c8f88;
-            font-size: 12px;
-            font-weight: 400;
-            margin-bottom: 6px;
-        }
-
-        .program-info {
-            color: #635c56;
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .tabs {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .tab-btn {
-            background: #1c1a19;
-            border: 1px solid #3a3532;
-            color: #9c8f88;
-            padding: 10px 14px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            text-align: left;
-            white-space: normal;
-        }
-
-        .tab-btn:hover {
-            border-color: #948294;
-            color: #f0e9df;
-            background: #3a3532;
-        }
-
-        .tab-btn.active {
-            background: #948294;
-            color: #1c1a19;
-            border-color: #948294;
-        }
-
-        .tab-btn.special {
-            background: #635c56;
-            border-color: #948294;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #3a3532;
-        }
-
-        .tab-btn.special:hover {
-            background: #74676f;
-            color: #f0e9df;
-        }
-
-        .other-sections {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #3a3532;
-        }
-
-        .other-sections h3 {
-            font-size: 11px;
-            color: #635c56;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }
-
-        .section-link {
-            display: block;
-            background: #1c1a19;
-            border: 1px solid #3a3532;
-            color: #9c8f88;
-            padding: 10px 14px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            margin-bottom: 6px;
-        }
-
-        .section-link:hover {
-            border-color: #948294;
-            color: #f0e9df;
-            background: #3a3532;
-        }
-
-        .main-content {
-            margin-left: 280px;
-            flex: 1;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .content-section {
-            display: none;
-        }
-
-        .content-section.active {
-            display: block;
+            font-size: 14px;
         }
 
         .section-header {
@@ -166,208 +131,14 @@
         }
 
         .section-header h2 {
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 800;
-            color: #f0e9df;
             margin-bottom: 8px;
         }
 
         .section-header p {
             color: #9c8f88;
             font-size: 14px;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .section-card {
-            background: #2c2926;
-            border: 1px solid #3a3532;
-            border-radius: 10px;
-            padding: 28px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .section-card:hover {
-            border-color: #948294;
-            background: #3a3532;
-            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .section-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #f0e9df;
-        }
-
-        .section-card p {
-            font-size: 13px;
-            color: #9c8f88;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .section-card .badge {
-            display: inline-block;
-            background: #948294;
-            color: #1c1a19;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            align-self: flex-start;
-            margin-top: 6px;
-        }
-
-        .intro-card {
-            background: #2c2926;
-            border: 2px solid #948294;
-            border-radius: 10px;
-            padding: 28px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            cursor: pointer;
-        }
-
-        .intro-card:hover {
-            background: #3a3532;
-            box-shadow: 0 8px 24px rgba(148, 130, 148, 0.25);
-            transform: translateY(-4px);
-        }
-
-        .intro-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #f0e9df;
-        }
-
-        .intro-card p {
-            font-size: 13px;
-            color: #9c8f88;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .intro-card .badge {
-            display: inline-block;
-            background: #948294;
-            color: #1c1a19;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            align-self: flex-start;
-            margin-top: 6px;
-        }
-
-        .intro-section {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 2px solid #3a3532;
-        }
-
-        .intro-section h2 {
-            font-size: 16px;
-            color: #948294;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-
-        footer {
-            margin-top: 80px;
-            padding-top: 30px;
-            border-top: 1px solid #3a3532;
-            text-align: center;
-            font-size: 12px;
-            color: #6b645c;
-        }
-
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 240px;
-            }
-
-            .main-content {
-                margin-left: 240px;
-                padding: 30px 15px;
-            }
-
-            .section-header h2 {
-                font-size: 24px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                flex-direction: column;
-            }
-
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid #3a3532;
-                padding: 20px;
-            }
-
-            .main-content {
-                margin-left: 0;
-                padding: 20px 15px;
-            }
-
-            .tabs {
-                flex-direction: row;
-                flex-wrap: wrap;
-                gap: 8px;
-            }
-
-            .tab-btn {
-                flex: 1;
-                min-width: 120px;
-            }
-
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-header h2 {
-                font-size: 20px;
-            }
-        }
-
-        .sidebar::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-            background: #1c1a19;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb {
-            background: #948294;
-            border-radius: 3px;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb:hover {
-            background: #c9bfae;
         }
 
         .player-section {
@@ -469,209 +240,215 @@
             font-size: 11px;
             color: #9c8f88;
         }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .section-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .section-card {
+            background: #2c2926;
+            border: 1px solid #3a3532;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .section-card:hover {
+            border-color: #948294;
+            background: #3a3532;
+            transform: translateY(-4px);
+        }
+
+        .section-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #f0e9df;
+        }
+
+        .section-card p {
+            font-size: 13px;
+            color: #9c8f88;
+            flex: 1;
+        }
+
+        .badge {
+            font-size: 11px;
+            background: #948294;
+            color: #1c1a19;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        footer {
+            text-align: center;
+            color: #9c8f88;
+            font-size: 12px;
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3532;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: #1c1a19;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #948294;
+            border-radius: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: #c9bfae;
+        }
     </style>
 </head>
 <body>
-    <!-- Bande latérale gauche -->
-    <div class="sidebar">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h1>Modèles de créatures</h1>
+            <p>574-3X6-LI</p>
+        </div>
+
+        <div class="nav-section">
+            <button class="nav-button active" data-section="accueil">Accueil</button>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Ressources vidéo</div>
+            <a href="Squelette.html" class="nav-button">Le Squelette</a>
+            <a href="Liste_Crane.html" class="nav-button">Le Crâne</a>
+            <button class="nav-button" data-section="globe-oculaire">Le globe oculaire</button>
+            <a href="Les_Muscles.html" class="nav-button">Les Muscles</a>
+            <a href="La_peau_et_finaliser_le_modele.html" class="nav-button">La peau et finaliser</a>
+            <a href="La_topologie.html" class="nav-button">La topologie</a>
+            <a href="Deploiement_UV.html" class="nav-button">Déploiement UV</a>
+            <a href="Projection_et_textures.html" class="nav-button">Projection et textures</a>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Blocs de formation</div>
+            <a href="Introduction_a_Zbrush_index.html" class="nav-button">Bloc 1 - Introduction à ZBrush</a>
+            <a href="Bloc_2_morphologie.html" class="nav-button">Bloc 2 - Morphologie</a>
+        </div>
+    </aside>
+
+    <main>
         <header>
             <h1>Modèles de créatures</h1>
-            <p class="subtitle">Ressources vidéo</p>
-            <p class="program-info">574-3X6-LI</p>
+            <p class="subtitle">574-3X6-LI • Cégep Limoilou</p>
         </header>
 
-        <!-- Onglets de navigation -->
-        <div class="tabs">
-            <button class="tab-btn active" data-tab="accueil">Accueil</button>
-            <button class="tab-btn" data-tab="squelette">Le Squelette</button>
-            <button class="tab-btn" data-tab="crane">Le Crâne</button>
-            <button class="tab-btn" data-tab="globe-oculaire">Le globe oculaire</button>
-            <button class="tab-btn" data-tab="muscles">Les Muscles</button>
-            <button class="tab-btn" data-tab="peau">La peau et finaliser</button>
-            <button class="tab-btn" data-tab="topologie">La topologie</button>
-            <button class="tab-btn" data-tab="deploiement">Déploiement UV</button>
-            <button class="tab-btn" data-tab="projection">Projection et textures</button>
-        </div>
-
-        <!-- Autres sections -->
-        <div class="other-sections">
-            <h3>Blocs de formation</h3>
-            <a href="Introduction_a_Zbrush_index.html" class="section-link">Bloc 1 - Introduction à ZBrush</a>
-            <a href="Bloc_2_morphologie.html" class="section-link">Bloc 2 - Morphologie</a>
-        </div>
-    </div>
-
-    <!-- Contenu principal -->
-    <div class="main-content">
-        <div class="container">
-            <!-- Section Accueil -->
-            <div id="accueil" class="content-section active">
-                <div class="section-header">
-                    <h2>Modèles de créatures</h2>
-                    <p>Ressources vidéo complètes pour la sculpture 3D</p>
-                </div>
-                <div class="card-grid">
-                    <a href="#" onclick="switchTab('squelette'); return false;" class="section-card">
-                        <h3>Le Squelette</h3>
-                        <p>Fondamentaux de la structure osseuse et de l'anatomie de base.</p>
-                        <span class="badge">6 vidéos</span>
-                    </a>
-
-                    <a href="#" onclick="switchTab('crane'); return false;" class="section-card">
-                        <h3>Le Crâne</h3>
-                        <p>Analyse détaillée du crâne, de la mandibule aux ajustements proportionnels.</p>
-                        <span class="badge">7 vidéos</span>
-                    </a>
-
-                    <a href="#" onclick="switchTab('globe-oculaire'); return false;" class="section-card">
-                        <h3>Le globe oculaire</h3>
-                        <p>Modélisation complète de l'œil, ajustement des références, déploiement des UV, texturisation.</p>
-                        <span class="badge">11 vidéos</span>
-                    </a>
-
-                    <a href="#" onclick="switchTab('muscles'); return false;" class="section-card">
-                        <h3>Les Muscles</h3>
-                        <p>Construction musculaire, zones abdominales, membres et transitions anatomiques.</p>
-                        <span class="badge">11 vidéos</span>
-                    </a>
-
-                    <a href="#" onclick="switchTab('peau'); return false;" class="section-card">
-                        <h3>La peau et finaliser</h3>
-                        <p>Finalisation du modèle : détails de surface, oreilles, yeux, griffes, intégration.</p>
-                        <span class="badge">17 vidéos</span>
-                    </a>
-
-                    <a href="#" onclick="switchTab('topologie'); return false;" class="section-card">
-                        <h3>La topologie</h3>
-                        <p>Passage de ZBrush à Maya, retopologie complète, UVs et optimisation maillage.</p>
-                        <span class="badge">26 vidéos</span>
-                    </a>
-
-                    <a href="#" onclick="switchTab('deploiement'); return false;" class="section-card">
-                        <h3>Déploiement UV</h3>
-                        <p>Cartographie et déploiement des coordonnées UV pour la texturisation.</p>
-                        <span class="badge">9 vidéos</span>
-                    </a>
-
-                    <a href="#" onclick="switchTab('projection'); return false;" class="section-card">
-                        <h3>Projection et textures</h3>
-                        <p>Projection de détails, coordonnées UV, intégration textures dans le pipeline.</p>
-                        <span class="badge">5 vidéos</span>
-                    </a>
-                </div>
+        <div id="accueil" class="content-section active">
+            <div class="section-header">
+                <h2>Ressources vidéo</h2>
+                <p>Sélectionne une section pour accéder aux ressources complètes.</p>
             </div>
 
-            <!-- Sections individuelles (contenu externe) -->
-            <div id="squelette" class="content-section">
-                <div class="section-header">
-                    <h2>Le Squelette</h2>
+            <div class="section-cards">
+                <a href="Squelette.html" class="section-card">
+                    <h3>Le Squelette</h3>
                     <p>Fondamentaux de la structure osseuse et de l'anatomie de base.</p>
-                </div>
-                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Squelette.html</p>
-                <a href="Squelette.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
-            </div>
+                    <span class="badge">6 vidéos</span>
+                </a>
 
-            <div id="crane" class="content-section">
-                <div class="section-header">
-                    <h2>Le Crâne</h2>
+                <a href="Liste_Crane.html" class="section-card">
+                    <h3>Le Crâne</h3>
                     <p>Analyse détaillée du crâne, de la mandibule aux ajustements proportionnels.</p>
-                </div>
-                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Liste_Crane.html</p>
-                <a href="Liste_Crane.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
-            </div>
+                    <span class="badge">7 vidéos</span>
+                </a>
 
-            <div id="globe-oculaire" class="content-section">
-                <div class="section-header">
-                    <h2>Le globe oculaire</h2>
-                    <p>Modélisation complète de l'œil, ajustement des références, déploiement des UV.</p>
-                </div>
-                <div class="player-section">
-                    <div class="player-wrapper">
-                        <iframe id="player-globe" width="560" height="315" src="https://www.youtube.com/embed/d57rwM42mW4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="player-info">
-                        <div class="player-title" id="title-globe">Une Sphère pour mon globe occulaire</div>
-                    </div>
-                </div>
-                <div class="thumbnails-section">
-                    <div class="thumbnails-title">Vidéos disponibles</div>
-                    <div class="thumbnails-grid" id="grid-globe"></div>
-                </div>
-            </div>
+                <a href="#" onclick="switchSection('globe-oculaire'); return false;" class="section-card">
+                    <h3>Le globe oculaire</h3>
+                    <p>Modélisation complète de l'œil, ajustement des références, texturisation.</p>
+                    <span class="badge">11 vidéos</span>
+                </a>
 
-            <div id="muscles" class="content-section">
-                <div class="section-header">
-                    <h2>Les Muscles</h2>
+                <a href="Les_Muscles.html" class="section-card">
+                    <h3>Les Muscles</h3>
                     <p>Construction musculaire, zones abdominales, membres et transitions anatomiques.</p>
-                </div>
-                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Les_Muscles.html</p>
-                <a href="Les_Muscles.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
-            </div>
+                    <span class="badge">11 vidéos</span>
+                </a>
 
-            <div id="peau" class="content-section">
-                <div class="section-header">
-                    <h2>La peau et finaliser</h2>
+                <a href="La_peau_et_finaliser_le_modele.html" class="section-card">
+                    <h3>La peau et finaliser</h3>
                     <p>Finalisation du modèle : détails de surface, oreilles, yeux, griffes, intégration.</p>
-                </div>
-                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis La_peau_et_finaliser_le_modele.html</p>
-                <a href="La_peau_et_finaliser_le_modele.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
-            </div>
+                    <span class="badge">17 vidéos</span>
+                </a>
 
-            <div id="topologie" class="content-section">
-                <div class="section-header">
-                    <h2>La topologie</h2>
+                <a href="La_topologie.html" class="section-card">
+                    <h3>La topologie</h3>
                     <p>Passage de ZBrush à Maya, retopologie complète, UVs et optimisation maillage.</p>
-                </div>
-                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis La_topologie.html</p>
-                <a href="La_topologie.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
-            </div>
+                    <span class="badge">26 vidéos</span>
+                </a>
 
-            <div id="deploiement" class="content-section">
-                <div class="section-header">
-                    <h2>Déploiement UV</h2>
+                <a href="Deploiement_UV.html" class="section-card">
+                    <h3>Déploiement UV</h3>
                     <p>Cartographie et déploiement des coordonnées UV pour la texturisation.</p>
-                </div>
-                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Deploiement_UV.html</p>
-                <a href="Deploiement_UV.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
-            </div>
+                    <span class="badge">9 vidéos</span>
+                </a>
 
-            <div id="projection" class="content-section">
-                <div class="section-header">
-                    <h2>Projection et textures</h2>
+                <a href="Projection_et_textures.html" class="section-card">
+                    <h3>Projection et textures</h3>
                     <p>Projection de détails, coordonnées UV, intégration textures dans le pipeline.</p>
-                </div>
-                <p style="color: #9c8f88; margin: 30px 0;">Contenu chargé depuis Projection_et_textures.html</p>
-                <a href="Projection_et_textures.html" class="section-card" style="display: inline-block; width: auto;">Accéder à la page complète →</a>
+                    <span class="badge">5 vidéos</span>
+                </a>
             </div>
-
 
             <footer>
-                Ressources vidéo · Alexandre Bellotto · Cégep Limoilou, programme 574.C0
+                <p>Ressources vidéo du cours Modèles de créatures — Cégep Limoilou</p>
             </footer>
         </div>
-    </div>
+
+        <div id="globe-oculaire" class="content-section">
+            <div class="section-header">
+                <h2>Le globe oculaire</h2>
+                <p>Modélisation complète de l'œil, ajustement des références, déploiement des UV, texturisation.</p>
+            </div>
+
+            <div class="player-section">
+                <div class="player-wrapper">
+                    <iframe id="player" width="560" height="315" src="https://www.youtube.com/embed/d57rwM42mW4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="player-info">
+                    <div class="player-title" id="video-title">Une Sphère pour mon globe occulaire</div>
+                </div>
+            </div>
+
+            <div class="thumbnails-section">
+                <div class="thumbnails-title">Vidéos disponibles</div>
+                <div class="thumbnails-grid" id="grid"></div>
+            </div>
+
+            <footer>
+                <p>Ressources vidéo du cours Modèles de créatures — Cégep Limoilou</p>
+            </footer>
+        </div>
+    </main>
 
     <script>
-        function switchTab(tabName) {
-            // Masquer toutes les sections
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Afficher la section sélectionnée
-            document.getElementById(tabName).classList.add('active');
-            
-            // Mettre à jour les boutons
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-            
-            // Scroll vers le haut
-            window.scrollTo(0, 0);
-        }
-
-        // Données des vidéos du globe oculaire
         const videosGlobe = [
             {"ordre":1,"titre":"Une Sphère pour mon globe occulaire","duree":"1:31","video_id":"d57rwM42mW4"},
             {"ordre":2,"titre":"Ajustement des référence dans la scène","duree":"1:24","video_id":"olBdOjobmqw"},
@@ -686,11 +463,10 @@
             {"ordre":11,"titre":"7 La cornée","duree":"1:50","video_id":"YaK9qRS3dcc"}
         ];
 
-        // Initialiser la grille de vidéos du globe oculaire
-        function initializeGlobeVideos() {
-            const grid = document.getElementById('grid-globe');
-            const player = document.getElementById('player-globe');
-            const title = document.getElementById('title-globe');
+        function initializeGrid() {
+            const grid = document.getElementById('grid');
+            const player = document.getElementById('player');
+            const title = document.getElementById('video-title');
 
             videosGlobe.forEach((video, index) => {
                 const card = document.createElement('div');
@@ -707,13 +483,8 @@
                 `;
                 
                 card.addEventListener('click', () => {
-                    // Activer la carte
-                    document.querySelectorAll('#grid-globe .thumbnail-card').forEach(c => {
-                        c.classList.remove('active');
-                    });
+                    document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
                     card.classList.add('active');
-                    
-                    // Charger la vidéo
                     player.src = `https://www.youtube.com/embed/${video.video_id}`;
                     title.textContent = video.titre;
                 });
@@ -722,17 +493,21 @@
             });
         }
 
-        // Système d'onglets
-        document.querySelectorAll('.tab-btn').forEach(btn => {
+        function switchSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-button[data-section]').forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(`[data-section="${sectionId}"]`).classList.add('active');
+        }
+
+        document.querySelectorAll('[data-section]').forEach(btn => {
             btn.addEventListener('click', () => {
-                switchTab(btn.getAttribute('data-tab'));
+                switchSection(btn.getAttribute('data-section'));
             });
         });
 
-        // Initialiser les vidéos au chargement
-        window.addEventListener('DOMContentLoaded', () => {
-            initializeGlobeVideos();
-        });
+        window.addEventListener('DOMContentLoaded', initializeGrid);
     </script>
 </body>
 </html>
