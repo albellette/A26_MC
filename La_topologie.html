@@ -115,6 +115,17 @@ details.dropdown summary:hover{background:#4A4339;}
             footer.page-footer { padding: 20px 16px; }
         }
 .page-header p,.page-footer p,.section-header p{margin-bottom:0;}
+.galerie img{cursor:zoom-in;}
+.zoom{position:fixed;inset:0;z-index:1000;background:rgba(20,18,17,.94);display:none;flex-direction:column;align-items:center;justify-content:center;padding:56px 20px 24px;cursor:zoom-out;}
+.zoom.ouvert{display:flex;}
+.zoom figure{max-width:min(1400px,100%);display:flex;flex-direction:column;align-items:center;cursor:default;}
+.zoom img{max-width:100%;max-height:calc(100vh - 220px);object-fit:contain;border-radius:6px;border:1px solid #3A3532;background:#1C1A19;}
+.zoom figcaption{margin-top:14px;max-width:900px;color:#F0E9DF;font-size:15px;line-height:1.5;text-align:center;}
+.zoom figcaption strong{color:#948294;}
+.zoom figcaption .src{display:block;margin-top:6px;font-size:13px;font-style:italic;color:#9C8F88;}
+.zoom .fermer{position:absolute;top:14px;right:18px;background:#3A3532;color:#F0E9DF;border:1px solid #635C56;border-radius:4px;font-size:20px;line-height:1;width:38px;height:38px;cursor:pointer;}
+.zoom .fermer:hover{border-color:#948294;}
+body.zoom-actif{overflow:hidden;}
 </style>
 </head>
 <body>
@@ -374,6 +385,26 @@ function lireVideo(el, id){
   el.innerHTML = '';
   el.appendChild(f);
 }
+</script>
+<div class="zoom" id="zoom" role="dialog" aria-modal="true" aria-label="Image agrandie">
+  <button class="fermer" type="button" aria-label="Fermer">&times;</button>
+  <figure><img id="zoom-img" alt=""><figcaption id="zoom-texte"></figcaption></figure>
+</div>
+
+<script>
+(function(){
+  var z=document.getElementById('zoom'), zi=document.getElementById('zoom-img'), zt=document.getElementById('zoom-texte');
+  function ouvrir(img){
+    var fig=img.closest('figure'), cap=fig && fig.querySelector('figcaption');
+    zi.src=img.src; zi.alt=img.alt;
+    zt.innerHTML=cap ? cap.innerHTML : img.alt;
+    z.classList.add('ouvert'); document.body.classList.add('zoom-actif');
+  }
+  function fermer(){ z.classList.remove('ouvert'); document.body.classList.remove('zoom-actif'); zi.removeAttribute('src'); }
+  document.querySelectorAll('.galerie img').forEach(function(img){ img.addEventListener('click',function(){ ouvrir(img); }); });
+  z.addEventListener('click',function(e){ if(e.target===z || e.target.classList.contains('fermer')) fermer(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && z.classList.contains('ouvert')) fermer(); });
+})();
 </script>
 </body>
 </html>
